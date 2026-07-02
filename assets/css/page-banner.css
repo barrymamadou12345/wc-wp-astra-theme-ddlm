@@ -1,0 +1,366 @@
+/* ==========================================================================
+   PAGE BANNER — Bannière d'en-tête des pages internes
+   Affichée sur les pages qui n'ont pas leur propre hero custom
+   ========================================================================== */
+
+.dm-page-banner {
+  position: relative;
+  background-color: var(--navy);
+  background-size: cover;
+  background-position: center;
+  padding: 5.5rem 0 5rem;
+  overflow: hidden;
+  z-index: 1;
+}
+/* Fallback fond couleur quand pas d'image */
+.dm-page-banner--solid {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+.dm-page-banner--solid .dm-page-banner-overlay {
+  display: none;
+}
+@media (min-width: 768px) {
+  .dm-page-banner {
+    padding: 6.5rem 0 6rem;
+  }
+}
+.dm-page-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(2, 66, 118, 0.68) 0%,
+    rgba(2, 66, 118, 0.48) 100%
+  );
+}
+.dm-page-banner-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .dm-page-banner-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-page-banner-inner {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.dm-page-banner-breadcrumb {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.dm-page-banner-breadcrumb a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.dm-page-banner-breadcrumb a:hover {
+  color: var(--orange);
+}
+.dm-page-banner-breadcrumb .current {
+  color: var(--orange);
+  font-weight: 500;
+}
+.dm-page-banner-breadcrumb .sep {
+  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+}
+.dm-page-banner-breadcrumb .sep::before {
+  content: "›";
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.dm-page-banner-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.dm-page-banner-divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--orange);
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+/* Description sous le titre */
+.dm-page-banner-description {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 36rem;
+  margin: 0.75rem 0 0;
+}
+
+/* ==========================================================================
+   OVERLAP — Le contenu chevauche nettement le bas du banner
+   Effet "cartes qui dépassent" comme le prototype catalogue/témoignages
+   ========================================================================== */
+body:not(.home):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+    .woocommerce-login
+  )
+  #primary.content-area,
+body:not(.home):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+    .woocommerce-login
+  )
+  #main.site-main {
+  position: relative;
+  z-index: 10;
+  margin-top: -3rem !important;
+}
+@media (min-width: 768px) {
+  body:not(.home):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+      .woocommerce-login
+    )
+    #primary.content-area,
+  body:not(.home):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+      .woocommerce-login
+    )
+    #main.site-main {
+    margin-top: -4rem !important;
+  }
+}
+
+/* Le premier enfant du contenu (filtres, cartes, etc.) doit avoir un fond
+   et un z-index supérieur pour bien marquer l'effet d'overlap */
+body:not(.home):not(.single-product):not(.archive):not(.search-no-results):not(
+    .woocommerce-cart
+  ):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+    .woocommerce-login
+  )
+  #main.site-main
+  > article,
+body:not(.home):not(.single-product):not(.archive):not(.search-no-results):not(
+    .woocommerce-cart
+  ):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+    .woocommerce-login
+  )
+  #main.site-main
+  > .entry-content,
+body:not(.home):not(.single-product):not(.archive):not(.search-no-results):not(
+    .woocommerce-cart
+  ):not(.woocommerce-checkout):not(.woocommerce-order-pay):not(
+    .woocommerce-login
+  )
+  .ast-container
+  > .entry-content {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  border-radius: 1rem 1rem 0 0;
+  padding-top: 1rem;
+}
+
+/* S'assurer que le banner reste en arrière-plan (z-index déjà défini plus haut) */
+
+/* ==========================================================================
+   BREADCRUMB ASTRA — Styliser le fil d'Ariane natif d'Astra
+   ========================================================================== */
+.dm-page-banner .ast-breadcrumbs,
+.dm-page-banner .ast-breadcrumbs-link,
+.dm-page-banner .ast-breadcrumbs-text {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+}
+.dm-page-banner .ast-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.dm-page-banner .ast-breadcrumbs a:hover {
+  color: var(--orange);
+}
+.dm-page-banner .ast-breadcrumbs .breadcrumb_last {
+  color: var(--orange);
+  font-weight: 500;
+}
+.dm-page-banner .ast-breadcrumbs .breadcrumb_separator {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0.375rem;
+}
+
+/* ==========================================================================
+   CARTE FLOTTANTE WC — chevauche le banner sur les pages WooCommerce
+   Pattern identique aux filtres catalogue : carte blanche flottante
+   avec margin-top négatif pour chevaucher le banner de 3rem.
+   ========================================================================== */
+.dm-wc-overlap-card {
+  position: relative;
+  z-index: 20;
+  max-width: var(--container-max);
+  margin: -3rem auto 2rem;
+  padding: 0 1rem;
+}
+@media (min-width: 768px) {
+  .dm-wc-overlap-card {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-wc-overlap-card {
+    padding: 0 2.5rem;
+  }
+}
+.dm-wc-overlap-card__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  background: #fff;
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 10px rgba(2, 66, 118, 0.06);
+  padding: 1.5rem 2rem;
+}
+.dm-wc-overlap-card__icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 107, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+}
+.dm-wc-overlap-card__icon--success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+/* Carte thank you : bordures vertes success (top + left) */
+.dm-wc-overlap-card--success .dm-wc-overlap-card__inner {
+  border-left: 4px solid #22c55e;
+  border-top: 3px solid #22c55e;
+}
+.dm-wc-overlap-card__avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.dm-wc-overlap-card__body {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+.dm-wc-overlap-card__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.25rem;
+}
+.dm-wc-overlap-card__desc {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  margin: 0 0 0.625rem;
+}
+.dm-wc-overlap-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.dm-wc-overlap-card__link:hover {
+  color: var(--orange);
+}
+.dm-wc-overlap-card__link--logout {
+  color: #e53e3e;
+}
+.dm-wc-overlap-card__link--logout:hover {
+  color: #c53030;
+}
+.dm-wc-overlap-card__link svg {
+  width: 16px;
+  height: 16px;
+}
+.dm-wc-overlap-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  background: var(--navy);
+  color: #fff !important;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+.dm-wc-overlap-card__cta:hover {
+  background: var(--navy-light);
+  color: #fff !important;
+}
+.dm-wc-overlap-card__cta svg {
+  width: 18px;
+  height: 18px;
+}
+@media (min-width: 1024px) {
+  .dm-wc-overlap-card__inner {
+    padding: 1.75rem 2.5rem;
+    gap: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .dm-wc-overlap-card {
+    margin-top: -2rem;
+  }
+  .dm-wc-overlap-card__inner {
+    padding: 1rem 1.25rem;
+    gap: 0.75rem;
+  }
+  .dm-wc-overlap-card__icon,
+  .dm-wc-overlap-card__avatar {
+    width: 2rem;
+    height: 2rem;
+  }
+  .dm-wc-overlap-card__title {
+    font-size: 0.9rem;
+  }
+  .dm-wc-overlap-card__desc {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+}

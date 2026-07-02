@@ -1,0 +1,142 @@
+/* ============================================================================
+   account-sidebar.css — Navigation latérale avec icônes, espacement, accents
+   ============================================================================ */
+
+/* --- Conteneur de la sidebar --- */
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-left: 3px solid var(--orange);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* --- Items de navigation --- */
+.woocommerce-account .woocommerce-MyAccount-navigation li {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: none;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation li + li {
+  margin-top: 0.4rem;
+}
+
+/* --- Liens --- */
+.woocommerce-account .woocommerce-MyAccount-navigation li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  color: var(--navy) !important;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+/* --- Icônes SVG --- */
+.woocommerce-account .woocommerce-MyAccount-navigation li a svg {
+  flex-shrink: 0;
+  opacity: 0.55;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* --- Hover --- */
+.woocommerce-account .woocommerce-MyAccount-navigation li a:hover {
+  background: rgba(2, 66, 118, 0.06);
+  color: var(--navy);
+  padding-left: 1.15rem;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation li a:hover svg {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* --- Item actif (navy = couleur principale du site) --- */
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a {
+  background: rgba(2, 66, 118, 0.1) !important;
+  color: var(--navy) !important;
+  padding-left: 1.15rem;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a svg {
+  opacity: 1;
+  color: var(--navy) !important;
+  transform: scale(1.1);
+}
+
+/* --- Déconnexion (rouge) --- */
+.woocommerce-account
+  .woocommerce-MyAccount-navigation
+  li.woocommerce-MyAccount-navigation-link--customer-logout
+  a {
+  color: #c0392b !important;
+}
+.woocommerce-account
+  .woocommerce-MyAccount-navigation
+  li.woocommerce-MyAccount-navigation-link--customer-logout
+  a:hover {
+  background: rgba(192, 57, 43, 0.08);
+  color: #a93226 !important;
+}
+.woocommerce-account
+  .woocommerce-MyAccount-navigation
+  li.woocommerce-MyAccount-navigation-link--customer-logout.is-active
+  a {
+  background: rgba(192, 57, 43, 0.12) !important;
+  color: #c0392b !important;
+}
+.woocommerce-account
+  .woocommerce-MyAccount-navigation
+  li.woocommerce-MyAccount-navigation-link--customer-logout.is-active
+  a
+  svg {
+  color: #c0392b !important;
+}
+
+/* --- En-tête de sidebar (label "Menu") --- */
+.woocommerce-account .woocommerce-MyAccount-navigation::before {
+  content: "Menu";
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+  padding: 0 0.5rem 0.5rem;
+}
+
+/* --- Responsive : sidebar verticale sur mobile --- */
+@media (max-width: 920px) {
+  .woocommerce-account .woocommerce-MyAccount-navigation::before {
+    display: none;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation ul {
+    display: block;
+    padding: 0.5rem 0.75rem 0.75rem 1rem;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation li {
+    width: 100%;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation li + li {
+    margin-top: 0.4rem;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation li a {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    justify-content: flex-start;
+    gap: 0.6rem;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation li a span {
+    display: inline;
+  }
+}

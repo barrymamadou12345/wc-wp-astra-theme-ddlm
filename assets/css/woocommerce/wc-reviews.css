@@ -1,0 +1,137 @@
+/* ==========================================================================
+   WC-REVIEWS — Section avis produit : formulaire, liste des avis,
+   étoiles, note moyenne.
+   Design system Délices de la Mer (navy / orange / Montserrat).
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Conteneur des avis                                                          */
+/* -------------------------------------------------------------------------- */
+.single-product #reviews {
+  font-family: var(--font-heading);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Note moyenne + lien "Voir tous les avis"                                   */
+/* -------------------------------------------------------------------------- */
+.single-product #reviews .woocommerce-Reviews-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.single-product .woocommerce-product-rating .star-rating {
+  font-size: 1rem;
+  color: var(--orange);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Liste des avis                                                              */
+/* -------------------------------------------------------------------------- */
+.single-product #comments ol.commentlist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+.single-product #comments ol.commentlist li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+.single-product #comments ol.commentlist li:hover {
+  box-shadow: 0 4px 16px rgba(2, 66, 118, 0.06);
+}
+.single-product #comments .comment-text {
+  padding: 0;
+}
+.single-product #comments .comment-text .star-rating {
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+.single-product #comments .comment-text p.meta {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin: 0 0 0.5rem;
+}
+.single-product #comments .comment-text p.meta strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+.single-product #comments .comment-text .description {
+  font-size: 0.9rem;
+  color: var(--navy);
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Formulaire d'avis                                                           */
+/* -------------------------------------------------------------------------- */
+.single-product #review_form_wrapper {
+  margin-top: 2rem;
+}
+.single-product #review_form .comment-reply-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+  display: block;
+}
+.single-product #review_form .comment-form input[type="text"],
+.single-product #review_form .comment-form input[type="email"],
+.single-product #review_form .comment-form textarea {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.625rem 0.75rem;
+  background: #fff;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+.single-product #review_form .comment-form input[type="text"]:focus,
+.single-product #review_form .comment-form input[type="email"]:focus,
+.single-product #review_form .comment-form textarea:focus {
+  border-color: var(--navy);
+  outline: none;
+}
+.single-product #review_form .comment-form textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+.single-product #review_form .comment-form label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  display: block;
+  margin-bottom: 0.375rem;
+}
+.single-product #review_form .comment-form .stars a {
+  color: var(--orange);
+  font-size: 1.25rem;
+}
+.single-product #review_form .comment-form .form-submit input#submit {
+  background-color: var(--navy-light);
+  color: #fff;
+  border: 1.5px solid var(--navy-light);
+  border-radius: var(--radius);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.single-product #review_form .comment-form .form-submit input#submit:hover {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 66, 118, 0.2);
+}

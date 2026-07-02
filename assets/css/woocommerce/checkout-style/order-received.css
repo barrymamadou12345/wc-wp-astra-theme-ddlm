@@ -1,0 +1,398 @@
+/* ============================================================================
+   order-received.css — Page de confirmation de commande (thankyou page)
+   Styles pour .woocommerce-order, récapitulatif, tableau, adresses.
+   Contrairement à account-orders.css qui cible .woocommerce-account,
+   cette page n'a PAS la classe .woocommerce-account.
+   ============================================================================ */
+
+/* ==========================================================================
+   MESSAGE DE REMERCIEMENT — carte blanche avec icône, border-left navy,
+   trait orange en bas
+   ========================================================================== */
+.woocommerce-order .woocommerce-thankyou-order-received {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  background: #fff !important;
+  color: var(--navy) !important;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-bottom: 3px solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  margin: 0 auto 2rem auto;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+.woocommerce-order .woocommerce-thankyou-order-received::before {
+  content: "";
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(2, 66, 118, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230a1e30' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+}
+
+/* ==========================================================================
+   RÉCAPITULATIF DE COMMANDE — ul.woocommerce-order-overview
+   Layout en cartes individuelles (une carte par info)
+   ========================================================================== */
+.woocommerce-order .woocommerce-order-overview,
+.woocommerce-order ul.order_details,
+.woocommerce-order .woocommerce-thankyou-order-details {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 1rem;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0;
+  overflow: visible;
+  margin-bottom: 2rem !important;
+  padding: 0 !important;
+  list-style: none !important;
+  box-shadow: none;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  clear: both !important;
+}
+.woocommerce-order .woocommerce-order-overview li,
+.woocommerce-order ul.order_details li,
+.woocommerce-order .woocommerce-thankyou-order-details li,
+.woocommerce-order .woocommerce-order-overview li.order,
+.woocommerce-order .woocommerce-order-overview li.date,
+.woocommerce-order .woocommerce-order-overview li.email,
+.woocommerce-order .woocommerce-order-overview li.total,
+.woocommerce-order .woocommerce-order-overview li.method {
+  float: none !important;
+  clear: none !important;
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.85rem 1rem !important;
+  margin: 0 !important;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+.woocommerce-order .woocommerce-order-overview li strong {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.woocommerce-order .woocommerce-order-overview__total strong {
+  color: var(--orange);
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   SECTION DÉTAILS DE COMMANDE — tableau
+   ========================================================================== */
+.woocommerce-order .woocommerce-order-details {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+.woocommerce-order .woocommerce-order-details__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--cream);
+  border-bottom: 2px solid var(--orange);
+}
+
+/* Tableau articles */
+.woocommerce-order .woocommerce-table--order-details {
+  border: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  margin: 0 !important;
+}
+.woocommerce-order .woocommerce-table--order-details thead th {
+  background: var(--navy) !important;
+  color: #fff !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.1rem;
+  border: 0;
+}
+.woocommerce-order .woocommerce-table--order-details td {
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--navy);
+  vertical-align: middle;
+}
+.woocommerce-order .woocommerce-table--order-details tfoot th {
+  background: var(--cream);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy);
+  padding: 0.75rem 1.1rem;
+  border-top: 1px solid var(--border);
+}
+.woocommerce-order .woocommerce-table--order-details tfoot td {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--navy);
+  padding: 0.75rem 1.1rem;
+  border-top: 1px solid var(--border);
+}
+.woocommerce-order .woocommerce-table--order-details tfoot .order-total th,
+.woocommerce-order .woocommerce-table--order-details tfoot .order-total td {
+  font-size: 1rem;
+  color: var(--orange);
+  border-top: 2px solid var(--border);
+}
+
+/* ==========================================================================
+   ADRESSES — facturation / livraison
+   Le template override order-details-customer.php utilise dm-address-grid /
+   dm-address-card. On duplique les styles ici car la page n'a pas .woocommerce-account.
+   ========================================================================== */
+.woocommerce-order .dm-address-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.25rem !important;
+  margin-bottom: 2rem;
+}
+.woocommerce-order .dm-address-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  transition: box-shadow 0.25s ease;
+}
+.woocommerce-order .dm-address-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+.woocommerce-order .dm-address-card__title {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.woocommerce-order .dm-address-card__content {
+  font-style: normal;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.woocommerce-order .dm-address-card__content p {
+  margin: 0;
+  color: var(--muted-foreground);
+}
+.woocommerce-order .woocommerce-customer-details--phone,
+.woocommerce-order .woocommerce-customer-details--email {
+  margin-top: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+}
+
+/* Fallback: si le template n'est pas overridé (legacy col2-set) */
+.woocommerce-order .woocommerce-columns--2,
+.woocommerce-order .woocommerce-columns {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.25rem !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 2rem;
+}
+.woocommerce-order .woocommerce-column {
+  float: none !important;
+  width: auto !important;
+  max-width: none !important;
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 1.25rem 1.5rem !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+  box-sizing: border-box !important;
+}
+.woocommerce-order .woocommerce-column__title {
+  font-family: var(--font-heading);
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  margin: 0 0 0.75rem !important;
+  padding-bottom: 0.65rem !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+.woocommerce-order .woocommerce-column address {
+  font-style: normal !important;
+  font-size: 0.85rem !important;
+  line-height: 1.65 !important;
+  color: var(--muted-foreground) !important;
+}
+
+/* ==========================================================================
+   BOUTON "RECOMMANDER" / actions
+   ========================================================================== */
+.woocommerce-order .woocommerce-order-details .order-again .button,
+.woocommerce-order .woocommerce-Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  padding: 0.6rem 1.5rem !important;
+  font-family: var(--font-heading);
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.woocommerce-order .woocommerce-order-details .order-again .button:hover {
+  background: var(--orange-dark) !important;
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .woocommerce-order .woocommerce-order-overview,
+  .woocommerce-order ul.order_details,
+  .woocommerce-order .woocommerce-thankyou-order-details {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+  }
+  .woocommerce-order .woocommerce-order-overview li,
+  .woocommerce-order ul.order_details li,
+  .woocommerce-order .woocommerce-thankyou-order-details li {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+  .woocommerce-order .woocommerce-order-overview li strong {
+    font-size: 0.85rem !important;
+  }
+  .woocommerce-order .woocommerce-order-overview__total strong {
+    font-size: 0.95rem !important;
+  }
+  .woocommerce-order .dm-address-grid,
+  .woocommerce-order .woocommerce-columns--2,
+  .woocommerce-order .woocommerce-columns {
+    grid-template-columns: 1fr !important;
+  }
+  .woocommerce-order .woocommerce-thankyou-order-received {
+    padding: 1.25rem 1rem;
+    font-size: 0.95rem;
+  }
+  .woocommerce-order .woocommerce-thankyou-order-received::before {
+    width: 36px;
+    height: 36px;
+    background-size: 18px 18px;
+  }
+  .woocommerce-order .woocommerce-table--order-details thead {
+    display: none;
+  }
+  .woocommerce-order .woocommerce-table--order-details,
+  .woocommerce-order .woocommerce-table--order-details tbody,
+  .woocommerce-order .woocommerce-table--order-details tr,
+  .woocommerce-order .woocommerce-table--order-details td {
+    display: block;
+    width: 100% !important;
+  }
+  .woocommerce-order .woocommerce-table--order-details tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .woocommerce-order .woocommerce-table--order-details td {
+    padding: 0.4rem 1.1rem;
+    border: 0;
+    text-align: left;
+  }
+  .woocommerce-order .woocommerce-table--order-details td::before {
+    content: attr(data-title);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  .woocommerce-order .woocommerce-table--order-details tfoot,
+  .woocommerce-order .woocommerce-table--order-details tfoot tr,
+  .woocommerce-order .woocommerce-table--order-details tfoot th,
+  .woocommerce-order .woocommerce-table--order-details tfoot td {
+    display: block;
+    width: 100% !important;
+  }
+  .woocommerce-order .woocommerce-table--order-details tfoot tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .woocommerce-order .woocommerce-table--order-details tfoot th,
+  .woocommerce-order .woocommerce-table--order-details tfoot td {
+    padding: 0.4rem 1.1rem;
+    border: 0;
+    text-align: left;
+  }
+  .woocommerce-order .woocommerce-table--order-details tfoot th::before {
+    content: attr(data-title);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+}

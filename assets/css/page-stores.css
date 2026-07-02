@@ -1,0 +1,806 @@
+/* ==========================================================================
+   PAGE STORES — Points de Vente Délices de la Mer
+   Reproduit le prototype StoreLocator.jsx
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Hero                                                                        */
+/* -------------------------------------------------------------------------- */
+.dm-stores-hero {
+  position: relative;
+  min-height: 320px;
+  height: 40vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+.dm-stores-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(2, 66, 118, 1) 0%,
+    rgba(2, 66, 118, 0.6) 60%,
+    rgba(2, 66, 118, 0.3) 100%
+  );
+}
+.dm-stores-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1rem 3rem;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .dm-stores-hero-content {
+    padding: 2rem 2rem 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-stores-hero-content {
+    padding: 2rem 2.5rem 4rem;
+  }
+}
+.dm-stores-hero-label {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 0.5rem;
+}
+.dm-stores-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+.dm-stores-hero-desc {
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 36rem;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Body container                                                              */
+/* -------------------------------------------------------------------------- */
+.dm-stores-body {
+  background-color: #ffffff;
+  padding-bottom: 2rem;
+}
+.dm-stores-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .dm-stores-container {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-stores-container {
+    padding: 0 2.5rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Filter bar — carte flottante qui chevauche le hero (pattern catalogue)      */
+/* -------------------------------------------------------------------------- */
+.dm-stores-filters {
+  position: relative;
+  z-index: 20;
+  max-width: var(--container-max);
+  margin: -2.5rem auto 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .dm-stores-filters {
+    padding: 0 2rem;
+    margin-top: -3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-stores-filters {
+    padding: 0 2.5rem;
+  }
+}
+.dm-stores-filters-inner {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.08);
+  border: 1px solid rgba(2, 66, 118, 0.06);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Ligne 1 : compteur + recherche */
+.dm-stores-filter-row-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.dm-stores-filter-count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  color: var(--navy);
+}
+.dm-stores-filter-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--orange);
+  line-height: 1;
+}
+.dm-stores-filter-label {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+.dm-stores-filter-search {
+  flex: 1 1 auto;
+  min-width: 200px;
+  max-width: 28rem;
+  margin-left: auto;
+  position: relative;
+}
+.dm-stores-search-icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+.dm-stores-filter-search input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--cream, #fdfcf8);
+  padding: 0 1rem 0 2.75rem;
+  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  color: var(--navy);
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  outline: none;
+}
+.dm-stores-filter-search input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+  background: #fff;
+}
+.dm-stores-filter-search input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Ligne 2 : filtres par zone (scrollable) */
+.dm-stores-filter-row-zones {
+  display: flex;
+  align-items: center;
+}
+.dm-stores-zones-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  padding-bottom: 0.25rem;
+}
+.dm-stores-zones-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.dm-stores-zones-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dm-stores-zones-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.dm-stores-zone-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.dm-stores-zone-pill:hover {
+  border-color: var(--orange);
+  background: rgba(255, 107, 0, 0.06);
+  color: var(--orange);
+}
+.dm-stores-zone-pill.is-active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+.dm-stores-zone-pill.is-active:hover {
+  background: var(--orange-dark);
+  border-color: var(--orange-dark);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .dm-stores-filter-row-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .dm-stores-filter-search {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Grid                                                                        */
+/* -------------------------------------------------------------------------- */
+.dm-stores-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+@media (min-width: 640px) {
+  .dm-stores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .dm-stores-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Store card                                                                  */
+/* -------------------------------------------------------------------------- */
+.dm-store-card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.06);
+  transition:
+    box-shadow 0.25s,
+    border-color 0.25s,
+    transform 0.25s;
+}
+.dm-store-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 6px 20px rgba(2, 66, 118, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Card image */
+.dm-store-card-image {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+.dm-store-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.dm-store-card:hover .dm-store-card-image img {
+  transform: scale(1.05);
+}
+.dm-store-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(2, 66, 118, 0.5) 0%,
+    transparent 60%
+  );
+}
+.dm-store-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-heading);
+}
+
+/* Card info */
+.dm-store-card-info {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dm-store-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.dm-store-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  background: rgba(255, 107, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.dm-store-card-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 0 0 0.125rem;
+  line-height: 1.3;
+}
+.dm-store-card-address {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+.dm-store-card-rayon {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  background: rgba(232, 230, 225, 0.5);
+  border-radius: var(--radius);
+  padding: 0.375rem 0.75rem;
+  margin: 0 0 0.75rem;
+  width: fit-content;
+}
+.dm-store-card-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--orange);
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: auto;
+  transition: text-decoration 0.2s;
+}
+.dm-store-card-phone:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Empty state                                                                 */
+/* -------------------------------------------------------------------------- */
+.dm-stores-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--muted-foreground);
+}
+.dm-stores-empty svg {
+  margin: 0 auto 0.75rem;
+  display: block;
+  opacity: 0.5;
+}
+.dm-stores-empty p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reveal animation                                                            */
+/* -------------------------------------------------------------------------- */
+.dm-store-card.reveal-el {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.dm-store-card.reveal-el.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Steps — Comment devenir distributeur (pattern Kante Volaille)               */
+/* -------------------------------------------------------------------------- */
+.dm-stores-contact-section + .dm-section {
+  padding-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .dm-stores-contact-section + .dm-section {
+    padding-top: 3rem;
+  }
+}
+.dm-steps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 0;
+}
+.dm-step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  flex-shrink: 0;
+  padding: 0 0.25rem;
+  opacity: 0.6;
+}
+@media (max-width: 1023px) {
+  .dm-steps-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dm-step-card {
+    max-width: 24rem;
+    width: 100%;
+  }
+  .dm-step-arrow {
+    transform: rotate(90deg);
+    padding: 0.25rem 0;
+  }
+}
+.dm-step-card {
+  flex: 1 1 0;
+  min-width: 200px;
+  max-width: 22rem;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.06);
+  transition:
+    box-shadow 0.25s,
+    border-color 0.25s,
+    transform 0.25s;
+}
+.dm-step-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 6px 20px rgba(2, 66, 118, 0.1);
+  transform: translateY(-2px);
+}
+.dm-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  font-family: var(--font-heading);
+}
+.dm-step-card-img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1.25rem;
+}
+.dm-step-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.dm-step-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 0.625rem;
+  line-height: 1.3;
+  font-family: var(--font-heading);
+}
+.dm-step-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Contact section — pleine largeur avec wave (pattern footer)                */
+/* -------------------------------------------------------------------------- */
+.dm-stores-contact-section {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  overflow: hidden;
+}
+.dm-stores-contact-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgba(255, 107, 0, 0.12) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+.dm-contact-wave {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 1;
+}
+.dm-contact-wave svg {
+  width: 100%;
+  height: 48px;
+  display: block;
+}
+@media (min-width: 768px) {
+  .dm-contact-wave svg {
+    height: 64px;
+  }
+}
+.dm-contact-section-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .dm-contact-section-inner {
+    padding: 1.5rem 2rem 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-contact-section-inner {
+    padding: 2rem 2.5rem 4.5rem;
+  }
+}
+.dm-contact-card-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 0.75rem;
+}
+.dm-contact-card-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+.dm-contact-card-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 32rem;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Contact options — 3 cartes côte à côte */
+.dm-contact-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+@media (min-width: 640px) {
+  .dm-contact-options {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 48rem;
+    gap: 1rem;
+  }
+}
+.dm-contact-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1.25rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    transform 0.25s;
+}
+.dm-contact-option:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.dm-contact-option-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 107, 0, 0.15);
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.dm-contact-option-wa .dm-contact-option-icon {
+  background: rgba(37, 211, 102, 0.2);
+  color: #25d366;
+}
+.dm-contact-option-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+}
+.dm-contact-option-name {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.dm-contact-option-value {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  word-break: break-all;
+  text-align: center;
+}
+@media (max-width: 639px) {
+  .dm-contact-option {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+  .dm-contact-option-text {
+    align-items: flex-start;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Advantages — Pourquoi nous choisir                                          */
+/* -------------------------------------------------------------------------- */
+.dm-advantages-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 640px) {
+  .dm-advantages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .dm-advantages-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.dm-advantage-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.06);
+  transition:
+    box-shadow 0.25s,
+    border-color 0.25s,
+    transform 0.25s;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.dm-advantage-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 6px 20px rgba(2, 66, 118, 0.1);
+  transform: translateY(-2px);
+}
+.dm-advantage-img {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  flex-shrink: 0;
+}
+.dm-advantage-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.dm-advantage-body {
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dm-advantage-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+.dm-advantage-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reveal animation for steps & advantages                                    */
+/* -------------------------------------------------------------------------- */
+.dm-step-card.reveal-el,
+.dm-step-arrow.reveal-el,
+.dm-advantage-card.reveal-el {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.dm-step-card.reveal-el.is-visible,
+.dm-step-arrow.reveal-el.is-visible,
+.dm-advantage-card.reveal-el.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

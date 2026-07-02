@@ -1,0 +1,213 @@
+/* ============================================================================
+   account-layout.css — Structure globale de l'espace client
+   Padding-top pour navbar fixe, largeur full-desktop, conteneur de contenu.
+   ============================================================================ */
+
+/* ==========================================================================
+   PADDING-TOP — compenser la navbar fixe (desktop uniquement)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .woocommerce-account .ast-separate-container,
+  .woocommerce-account .ast-separate-container .entry-content,
+  .woocommerce-account.ast-separate-container #primary,
+  .woocommerce-account .ast-separate-container .site-main,
+  .woocommerce-account .ast-separate-container .ast-article-single,
+  .woocommerce-account #content.site-content,
+  .woocommerce-account .ast-container {
+    padding-top: 3.5rem !important;
+    padding-bottom: 6.5rem !important;
+    margin-top: 0 !important;
+  }
+  /* Page de connexion : reset total du container, seules les cartes ont -3rem */
+  .woocommerce-account.woocommerce-login .ast-separate-container,
+  .woocommerce-account.woocommerce-login .ast-separate-container .entry-content,
+  .woocommerce-account.woocommerce-login.ast-separate-container #primary,
+  .woocommerce-account.woocommerce-login .ast-separate-container .site-main,
+  .woocommerce-account.woocommerce-login
+    .ast-separate-container
+    .ast-article-single,
+  .woocommerce-account.woocommerce-login #content.site-content,
+  .woocommerce-account.woocommerce-login .ast-container,
+  .woocommerce-account.woocommerce-login .ast-plain-container,
+  .woocommerce-account.woocommerce-login .ast-plain-container .entry-content,
+  .woocommerce-account.woocommerce-login.ast-plain-container #primary,
+  .woocommerce-account.woocommerce-login .ast-plain-container .site-main,
+  .woocommerce-account.woocommerce-login
+    .ast-plain-container
+    .ast-article-single {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  /* Reset du margin-top négatif d'Astra sur .site-main */
+  .woocommerce-account.woocommerce-login .site-main {
+    margin-top: 0 !important;
+  }
+  /* Reset du padding-top de l'article */
+  .woocommerce-account.woocommerce-login .ast-article-single {
+    padding-top: 0 !important;
+  }
+}
+@media (max-width: 1023px) {
+  .woocommerce-account .ast-separate-container,
+  .woocommerce-account .ast-separate-container .entry-content,
+  .woocommerce-account.ast-separate-container #primary,
+  .woocommerce-account .ast-separate-container .site-main,
+  .woocommerce-account #content.site-content {
+    padding-top: 1.5rem !important;
+    margin-top: 0 !important;
+  }
+  /* Page de connexion mobile : reset total */
+  .woocommerce-account.woocommerce-login .ast-separate-container,
+  .woocommerce-account.woocommerce-login .ast-separate-container .entry-content,
+  .woocommerce-account.woocommerce-login.ast-separate-container #primary,
+  .woocommerce-account.woocommerce-login .ast-separate-container .site-main,
+  .woocommerce-account.woocommerce-login #content.site-content,
+  .woocommerce-account.woocommerce-login .ast-plain-container,
+  .woocommerce-account.woocommerce-login .ast-plain-container .entry-content,
+  .woocommerce-account.woocommerce-login.ast-plain-container #primary,
+  .woocommerce-account.woocommerce-login .ast-plain-container .site-main,
+  .woocommerce-account.woocommerce-login
+    .ast-plain-container
+    .ast-article-single {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  .woocommerce-account.woocommerce-login .site-main {
+    margin-top: 0 !important;
+  }
+  .woocommerce-account.woocommerce-login .ast-article-single {
+    padding-top: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   LARGEUR FULL-DESKTOP
+   ========================================================================== */
+.woocommerce-account .ast-separate-container,
+.woocommerce-account.ast-separate-container #primary,
+.woocommerce-account .ast-separate-container .ast-article-single,
+.woocommerce-account .ast-separate-container .entry-content,
+.woocommerce-account .ast-separate-container .site-main,
+.woocommerce-account #content.site-content .ast-container,
+.woocommerce-account #content.site-content #primary,
+.woocommerce-account #content.site-content .site-main {
+  max-width: 1280px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+.woocommerce-account .ast-container,
+.woocommerce-account .ast-separate-container .ast-container {
+  max-width: 1280px !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+@media (max-width: 768px) {
+  .woocommerce-account .ast-container,
+  .woocommerce-account .ast-separate-container .ast-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   GRILLE PRINCIPALE — sidebar + contenu en flex
+   ========================================================================== */
+.woocommerce-account .woocommerce {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  float: none !important;
+  flex: 0 0 280px;
+  max-width: 280px;
+  width: auto !important;
+}
+.woocommerce-account .woocommerce-MyAccount-content {
+  float: none !important;
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto !important;
+  max-width: none !important;
+}
+@media (max-width: 768px) {
+  .woocommerce-account .woocommerce {
+    flex-direction: column;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation,
+  .woocommerce-account .woocommerce-MyAccount-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   CARTE DE CONTENU PRINCIPALE
+   ========================================================================== */
+.woocommerce-account .woocommerce-MyAccount-content {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  padding: 1.75rem;
+  color: var(--navy);
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .woocommerce-account .woocommerce-MyAccount-content {
+    padding: 1.25rem;
+    border-radius: var(--radius);
+  }
+}
+
+/* Masquer le texte par défaut de WC sur le dashboard */
+.woocommerce-account .woocommerce-MyAccount-content:has(.dm-dashboard) > p {
+  display: none !important;
+}
+
+/* Page de connexion : neutraliser la carte de contenu + plein largeur */
+.woocommerce-account .woocommerce:has(form.woocommerce-form-login),
+.woocommerce-account .woocommerce:has(form.login) {
+  display: block !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+.woocommerce-account
+  .woocommerce-MyAccount-content:has(form.woocommerce-form-login),
+.woocommerce-account .woocommerce-MyAccount-content:has(form.login) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Liens génériques */
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  a:not(.button):not(.dm-address-card__edit):not(.edit) {
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  a:not(.button):not(.dm-address-card__edit):not(.edit):hover {
+  color: var(--orange);
+}
+
+/* Titres de pages (h2) */
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  h2:not(.dm-address-card__title):not(.woocommerce-column__title) {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--orange);
+}

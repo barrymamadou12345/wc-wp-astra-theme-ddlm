@@ -1,0 +1,445 @@
+/* ==========================================================================
+   WC-SHOP-FILTERS — Barre de filtres du Catalogue
+   Chevauche le banner avec un effet "carte flottante" moderne.
+   Contient : recherche, filtres par catégorie (pills), tri.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Conteneur principal — carte flottante qui chevauche le banner              */
+/* -------------------------------------------------------------------------- */
+.dm-shop-filters {
+  position: relative;
+  z-index: 20;
+  max-width: var(--container-max);
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .dm-shop-filters {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-shop-filters {
+    padding: 0 2.5rem;
+  }
+}
+
+.dm-shop-filters-inner {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgba(2, 66, 118, 0.12);
+  border: 1px solid rgba(2, 66, 118, 0.06);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Ligne 1 : recherche + tri */
+.dm-shop-filter-row-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Ligne 2 : catégories */
+.dm-shop-filter-row-categories {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .dm-shop-filters-inner {
+    padding: 1.5rem 2rem;
+  }
+  .dm-shop-filter-row-top {
+    flex-wrap: nowrap;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Recherche                                                                   */
+/* -------------------------------------------------------------------------- */
+.dm-shop-filter-search {
+  flex: 1 1 auto;
+  min-width: 12rem;
+}
+
+@media (min-width: 768px) {
+  .dm-shop-filter-search {
+    flex: 1 1 auto;
+    max-width: 20rem;
+  }
+}
+
+.dm-shop-search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dm-shop-search-icon {
+  position: absolute;
+  left: 1rem;
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dm-shop-search-input {
+  width: 100%;
+  padding: 0.625rem 1.25rem 0.625rem 3rem !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius-full) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.85rem !important;
+  color: var(--navy) !important;
+  background: var(--cream, #fdfcf8) !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.dm-shop-search-input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+  background: #fff;
+}
+
+.dm-shop-search-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Filtres par catégorie — pills                                               */
+/* -------------------------------------------------------------------------- */
+.dm-shop-filter-categories {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  padding-bottom: 0.25rem;
+}
+
+.dm-shop-filter-categories::-webkit-scrollbar {
+  height: 4px;
+}
+.dm-shop-filter-categories::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dm-shop-filter-categories::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.dm-shop-filter-categories::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+.dm-shop-cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.dm-shop-cat-pill:hover {
+  border-color: var(--navy-light);
+  background: rgba(58, 130, 196, 0.06);
+  color: var(--navy-light);
+}
+
+.dm-shop-cat-pill.is-active {
+  background: var(--navy-light);
+  border-color: var(--navy-light);
+  color: #fff;
+}
+
+.dm-shop-cat-pill.is-active:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.dm-shop-cat-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: rgba(2, 66, 118, 0.08);
+  color: var(--navy);
+  line-height: 1;
+}
+
+.dm-shop-cat-pill.is-active .dm-shop-cat-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tri — select stylisé                                                        */
+/* -------------------------------------------------------------------------- */
+.dm-shop-filter-sort {
+  flex: 0 0 auto;
+  position: relative;
+  margin-left: auto;
+}
+
+.dm-shop-sort-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.5rem 2rem 0.5rem 1rem !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius-full) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--navy) !important;
+  background: #fff !important;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.dm-shop-sort-select:hover {
+  border-color: var(--navy-light);
+}
+
+.dm-shop-sort-select:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+}
+
+.dm-shop-sort-chevron {
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mobile — réorganiser l'affichage                                            */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .dm-shop-filter-row-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .dm-shop-filter-search {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: none;
+  }
+
+  .dm-shop-filter-sort {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dm-shop-sort-select {
+    width: 100%;
+  }
+
+  .dm-shop-cat-pill {
+    flex-shrink: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Animation d'apparition                                                      */
+/* -------------------------------------------------------------------------- */
+.dm-shop-filters {
+  animation: dmShopFiltersIn 0.4s ease-out;
+}
+
+@keyframes dmShopFiltersIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* S'assurer que le contenu de la boutique est au-dessus du banner             */
+/* -------------------------------------------------------------------------- */
+.woocommerce .shop-loop-wrapper,
+.woocommerce ul.products {
+  position: relative;
+  z-index: 10;
+}
+
+/* Espacement entre les filtres et la grille de produits */
+.dm-shop-filters + .woocommerce ul.products {
+  margin-top: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Conteneur boutique — alignement avec navbar + padding                       */
+/* -------------------------------------------------------------------------- */
+
+/* Neutraliser les paddings Astra sur la page boutique pour aligner avec navbar */
+.woocommerce.archive .ast-container,
+.woocommerce-page.archive .ast-container,
+.woocommerce.search .ast-container,
+.woocommerce-page.search .ast-container {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.woocommerce.archive ul.products,
+.woocommerce-page.archive ul.products,
+.woocommerce.search ul.products,
+.woocommerce-page.search ul.products {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .woocommerce.archive ul.products,
+  .woocommerce-page.archive ul.products,
+  .woocommerce.search ul.products,
+  .woocommerce-page.search ul.products {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .woocommerce.archive ul.products,
+  .woocommerce-page.archive ul.products,
+  .woocommerce.search ul.products,
+  .woocommerce-page.search ul.products {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Pagination alignée avec le conteneur */
+.woocommerce nav.woocommerce-pagination {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .woocommerce nav.woocommerce-pagination {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .woocommerce nav.woocommerce-pagination {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Messages WC alignés avec le conteneur */
+.woocommerce .woocommerce-notices-wrapper {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .woocommerce .woocommerce-notices-wrapper {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .woocommerce .woocommerce-notices-wrapper {
+    padding: 0 2.5rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Message "aucun produit trouvé"                                              */
+/* -------------------------------------------------------------------------- */
+.woocommerce .woocommerce-info.no-products-found,
+.woocommerce p.woocommerce-info,
+.woocommerce .woocommerce-info {
+  max-width: var(--container-max);
+  margin: 2rem auto !important;
+  padding: 2.5rem 2rem !important;
+  text-align: center;
+  border-radius: var(--radius-lg) !important;
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-top: 1px solid var(--border) !important;
+  border-left: 1px solid var(--border) !important;
+  color: var(--navy) !important;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.06) !important;
+}
+
+.woocommerce .woocommerce-info.no-products-found::before,
+.woocommerce p.woocommerce-info::before,
+.woocommerce .woocommerce-info::before {
+  display: none;
+}
+
+/* Icône décorative dans le message "aucun produit" */
+.woocommerce .woocommerce-info.no-products-found::after,
+.woocommerce p.woocommerce-info::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23ff6b00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.5;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Grille de produits — padding cohérent avec la barre de filtres              */
+/* -------------------------------------------------------------------------- */
+.woocommerce.archive ul.products,
+.woocommerce.search ul.products {
+  padding-bottom: 2rem;
+}

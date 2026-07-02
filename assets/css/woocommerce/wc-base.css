@@ -1,0 +1,156 @@
+/* ==========================================================================
+   WC-BASE — Fondations WooCommerce (chargé globalement sur tout le site)
+   Adapte les conteneurs, grilles, typographie et messages WC au design system
+   Délices de la Mer (navy / orange / Montserrat).
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Variables spécifiques WooCommerce                                           */
+/* -------------------------------------------------------------------------- */
+:root {
+  --wc-radius: var(--radius);
+  --wc-radius-lg: var(--radius-lg);
+  --wc-font: var(--font-heading);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Conteneurs WooCommerce — pleine largeur, pas de fond parasite              */
+/* -------------------------------------------------------------------------- */
+.woocommerce .woocommerce-notices-wrapper,
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-error {
+  border-radius: var(--wc-radius);
+  font-family: var(--wc-font);
+}
+
+.woocommerce .woocommerce-message {
+  border-top-color: var(--navy);
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.08);
+}
+.woocommerce .woocommerce-message::before {
+  color: var(--navy);
+}
+
+.woocommerce .woocommerce-info {
+  border-top-color: var(--orange);
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.08);
+}
+.woocommerce .woocommerce-info::before {
+  color: var(--orange);
+}
+
+.woocommerce .woocommerce-error {
+  border-top-color: #e53e3e;
+  background: #fff;
+  color: #c53030;
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.08);
+}
+.woocommerce .woocommerce-error::before {
+  color: #e53e3e;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Typographie WooCommerce                                                     */
+/* -------------------------------------------------------------------------- */
+.woocommerce .woocommerce-result-count,
+.woocommerce .woocommerce-ordering select,
+.woocommerce .star-rating,
+.woocommerce .star-rating span,
+.woocommerce .price,
+.woocommerce .price ins,
+.woocommerce .price del,
+.woocommerce ul.products li.product .price,
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  font-family: var(--wc-font) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Grille boutique — responsive par défaut                                     */
+/* -------------------------------------------------------------------------- */
+.woocommerce ul.products {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .woocommerce ul.products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .woocommerce ul.products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1280px) {
+  .woocommerce ul.products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Pagination                                                                  */
+/* -------------------------------------------------------------------------- */
+.woocommerce nav.woocommerce-pagination ul {
+  border: none;
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+.woocommerce nav.woocommerce-pagination ul li {
+  border: none;
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  border-radius: var(--wc-radius);
+  border: 1px solid var(--border);
+  font-family: var(--wc-font);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--navy);
+  background: #fff;
+  transition: all 0.2s ease;
+}
+.woocommerce nav.woocommerce-pagination ul li a:hover {
+  background-color: var(--navy-light);
+  color: #fff;
+  border-color: var(--navy-light);
+}
+.woocommerce nav.woocommerce-pagination ul li span.current {
+  background-color: var(--navy-light);
+  color: #fff;
+  border-color: var(--navy-light);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Breadcrumbs (Yoast / WC)                                                    */
+/* -------------------------------------------------------------------------- */
+.woocommerce .woocommerce-breadcrumb {
+  font-family: var(--wc-font);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin: 0 0 2rem;
+}
+.woocommerce .woocommerce-breadcrumb a {
+  color: var(--navy);
+  text-decoration: none;
+}
+.woocommerce .woocommerce-breadcrumb a:hover {
+  color: var(--orange);
+}

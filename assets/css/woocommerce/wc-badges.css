@@ -1,0 +1,110 @@
+/* ==========================================================================
+   WC-BADGES — Badges WooCommerce (promo, rupture, nouveauté)
+   Chargé sur les pages WooCommerce (boutique, fiche, cross-sells).
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Badge "Promo" (réduction)                                                   */
+/* -------------------------------------------------------------------------- */
+.woocommerce span.onsale,
+.woocommerce ul.products li.product .onsale {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 5;
+  min-width: auto;
+  min-height: auto;
+  margin: 0;
+  padding: 0.3rem 0.625rem;
+  border-radius: var(--radius-full);
+  background-color: var(--orange);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  border: none;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Badge "En stock" / "Rupture"                                                */
+/* -------------------------------------------------------------------------- */
+.woocommerce div.product .stock,
+.woocommerce div.product p.stock {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+}
+.woocommerce div.product .stock.in-stock {
+  color: var(--navy);
+  background: rgba(2, 66, 118, 0.08);
+  border: 1px solid rgba(2, 66, 118, 0.15);
+}
+.woocommerce div.product .stock.in-stock::before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: var(--navy-light);
+}
+.woocommerce div.product .stock.out-of-stock {
+  color: var(--orange-dark);
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+.woocommerce div product .stock.out-of-stock::before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: var(--orange);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Badge "Nouveau" (optionnel, via plugin ou custom)                           */
+/* -------------------------------------------------------------------------- */
+.badge-new {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  padding: 0.3rem 0.625rem;
+  border-radius: var(--radius-full);
+  background-color: var(--navy-light);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  box-shadow: 0 4px 12px rgba(2, 66, 118, 0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Badges de catégorie (fil d'ariane produits)                                 */
+/* -------------------------------------------------------------------------- */
+.woocommerce .term-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(2, 66, 118, 0.06);
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.woocommerce .term-badge:hover {
+  background-color: rgba(2, 66, 118, 0.12);
+}

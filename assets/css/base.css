@@ -1,0 +1,1047 @@
+/* ==========================================================================
+   BASE — Variables, typographie, helpers globaux
+   Design System : Délices de la Mer
+   Couleurs : Navy #024276 (primary), Orange #FF6B00 (secondary)
+   Polices : Montserrat (titres), Inter (body)
+   ========================================================================== */
+
+:root {
+  /* Brand Colors — Délices de la Mer */
+  --navy: #024276;
+  --navy-light: #1a5a8c;
+  --navy-dark: #013358;
+  --orange: #ff6b00;
+  --orange-light: #ff8c33;
+  --orange-dark: #cc5500;
+  --cream: #fdfcf8;
+  --cream-dark: #f5f3ee;
+  --whatsapp: #25d366;
+  --whatsapp-dark: #20bd5a;
+
+  /* Semantic aliases */
+  --primary: var(--navy);
+  --primary-light: var(--navy-light);
+  --primary-dark: var(--navy-dark);
+  --secondary: var(--orange);
+  --secondary-dark: var(--orange-dark);
+  --background: var(--cream);
+  --foreground: var(--navy);
+  --muted: #e8e6e1;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --card-foreground: var(--navy);
+
+  /* Fonts — Montserrat partout (police unique de l'application) */
+  --font-heading:
+    "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:
+    "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:
+    "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Layout */
+  --container-max: 1280px;
+  --radius: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Typographie globale                                                         */
+/* -------------------------------------------------------------------------- */
+body,
+p,
+a,
+span,
+div,
+button,
+input,
+textarea,
+select,
+li {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy);
+  border-radius: 3px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Conteneurs & espacements de sections                                        */
+/* -------------------------------------------------------------------------- */
+.dm-container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .dm-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.dm-section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+@media (min-width: 768px) {
+  .dm-section {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.dm-section--sm {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.bg-navy {
+  background-color: rgba(2, 66, 118, 0.88);
+}
+.bg-cream {
+  background-color: var(--cream);
+}
+.bg-white {
+  background-color: #fff;
+}
+.bg-muted {
+  background-color: var(--cream-dark);
+}
+
+/* -------------------------------------------------------------------------- */
+/* En-têtes de section (label / titre / divider)                               */
+/* -------------------------------------------------------------------------- */
+.section-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .section-head {
+    margin-bottom: 4rem;
+  }
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin: 0;
+}
+.section-title .accent-orange {
+  color: var(--orange);
+}
+
+.section-title-white {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  line-height: 1.7;
+}
+
+.divider-orange {
+  width: 60px;
+  height: 3px;
+  background-color: var(--orange);
+  border-radius: 2px;
+  margin: 1.25rem auto 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Boutons                                                                     */
+/* -------------------------------------------------------------------------- */
+.btn-primary,
+.btn-orange,
+.btn-outline,
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--navy-light);
+  color: #fff;
+  border: 2px solid var(--navy-light);
+}
+.btn-primary:hover {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(2, 66, 118, 0.25);
+  color: #fff;
+}
+
+.btn-orange {
+  background-color: var(--orange);
+  color: #fff;
+  border: 2px solid var(--orange);
+  font-weight: 700;
+}
+.btn-orange:hover {
+  background-color: var(--orange-dark);
+  border-color: var(--orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.35);
+  color: #fff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--navy-light);
+  border: 2px solid var(--navy-light);
+}
+.btn-outline:hover {
+  background-color: var(--navy-light);
+  color: #fff;
+  border-color: var(--navy-light);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background-color: var(--whatsapp);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+.btn-whatsapp:hover {
+  background-color: var(--whatsapp-dark);
+  color: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Badges                                                                      */
+/* -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge .dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+}
+.badge-popular {
+  background-color: var(--orange);
+  color: #fff;
+}
+.badge-type {
+  background-color: rgba(2, 66, 118, 0.8);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+.badge-category {
+  background-color: rgba(255, 107, 0, 0.1);
+  color: var(--orange-dark);
+}
+.badge-instock {
+  background-color: rgba(2, 66, 118, 0.08);
+  color: var(--navy);
+  border: 1px solid rgba(2, 66, 118, 0.15);
+}
+.badge-instock .dot {
+  background-color: var(--navy-light);
+}
+.badge-outofstock {
+  background-color: rgba(255, 107, 0, 0.08);
+  color: var(--orange-dark);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+.badge-outofstock .dot {
+  background-color: var(--orange);
+}
+.badge-new {
+  background-color: var(--navy-light);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(2, 66, 118, 0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cartes & effets                                                             */
+/* -------------------------------------------------------------------------- */
+.card-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(2, 66, 118, 0.15);
+}
+
+.product-card-hover {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.product-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(2, 66, 118, 0.12);
+}
+
+/* Carte générique — utilisable sur toutes les pages */
+.dm-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.dm-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(2, 66, 118, 0.1);
+}
+
+/* Carte avec image en haut */
+.dm-card-img-top {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.dm-card-img-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(2, 66, 118, 0.1);
+}
+.dm-card-img-top img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+.dm-card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+/* Carte sombre (fond navy) */
+.dm-card-dark {
+  background: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  color: #fff;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+.dm-card-dark:hover {
+  transform: translateY(-4px);
+  background: var(--navy-light);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Animations                                                                  */
+/* -------------------------------------------------------------------------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.3);
+  }
+}
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+/* Reveal au scroll (piloté par IntersectionObserver) */
+.reveal-el {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.reveal-el.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-el {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .pulse-dot,
+  .fade-up,
+  .dm-wa-btn {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Wave dividers (SVG)                                                        */
+/* -------------------------------------------------------------------------- */
+.wave-divider {
+  width: 100%;
+  line-height: 0;
+}
+.wave-divider svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+@media (min-width: 768px) {
+  .wave-divider svg {
+    height: 80px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* ASTRA OVERRIDES — forcer les wrappers Astra en block pleine largeur        */
+/* Empêche les sections de s'afficher côte à côte (flex/grid d'Astra)          */
+/* -------------------------------------------------------------------------- */
+#primary.content-area,
+#main.site-main,
+.ast-container,
+.ast-page-builder-template .site-main,
+.ast-page-builder-template #primary {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+/* Sur l'accueil : pas de padding sur le contenu */
+body.home #content.site-content,
+body.home #primary,
+body.home #main,
+body.home .entry-content,
+body.home .ast-article-single,
+body.home .ast-page-builder-template .site-main > article,
+body.home .ast-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Cacher tout élément Astra vide qui pourrait créer une carte/colorée parasite */
+body.home .ast-page-builder-template .site-main > article:not(:has(section)),
+body.home .entry-content:empty,
+body.home .ast-article-single:empty {
+  display: none !important;
+}
+
+/* Sur les pages internes : padding horizontal pour éviter que le contenu touche les bords */
+body:not(.home) #content.site-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+body:not(.home) .ast-container,
+body:not(.home) .ast-width,
+body:not(.home) .ast-full-width {
+  max-width: var(--container-max) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+@media (min-width: 768px) {
+  body:not(.home) .ast-container,
+  body:not(.home) .ast-width,
+  body:not(.home) .ast-full-width {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  body:not(.home) .ast-container,
+  body:not(.home) .ast-width,
+  body:not(.home) .ast-full-width {
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+  }
+}
+
+/* Sur l'accueil : conteneurs pleine largeur (les sections gèrent leur propre padding) */
+body.home .ast-container,
+body.home .ast-width,
+body.home .ast-full-width {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Bouton flottant WhatsApp                                                   */
+/* -------------------------------------------------------------------------- */
+.dm-wa-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.dm-wa-btn {
+  width: 4.5rem;
+  height: 4.5rem;
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--whatsapp);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+  animation: dmWaBounce 3s ease-in-out infinite;
+  position: relative;
+}
+.dm-wa-btn:hover {
+  background-color: var(--whatsapp-dark);
+  transform: scale(1.1);
+}
+.dm-wa-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Badge chat */
+.dm-wa-chat-badge {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--orange);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  animation: dmWaPing 2s ease-in-out infinite;
+}
+
+@keyframes dmWaBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes dmWaPing {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.dm-wa-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  padding: 1.25rem;
+  width: 16rem;
+  border: 1px solid rgba(2, 66, 118, 0.1);
+  animation: dmWaSlideIn 0.3s ease;
+}
+.dm-wa-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.dm-wa-card-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--whatsapp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dm-wa-icon-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #fff;
+}
+.dm-wa-card-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--navy);
+}
+.dm-wa-card-status {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.125rem;
+  font-size: 0.75rem;
+  color: var(--whatsapp);
+  font-weight: 500;
+}
+.dm-wa-pulse-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--whatsapp);
+  animation: dmWaPulse 1.5s ease-in-out infinite;
+}
+.dm-wa-card-msg {
+  font-size: 0.875rem;
+  color: rgba(2, 66, 118, 0.7);
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+.dm-wa-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.dm-wa-card-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--navy);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.dm-wa-card-link:hover {
+  background-color: rgba(37, 211, 102, 0.08);
+}
+
+@keyframes dmWaPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+@keyframes dmWaSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .dm-wa-float {
+    bottom: 5rem;
+    right: 1rem;
+  }
+  .dm-wa-btn {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+  .dm-wa-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .dm-wa-chat-badge {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .dm-wa-chat-badge svg {
+    width: 16px;
+    height: 16px;
+  }
+  .dm-wa-card {
+    width: 16rem;
+  }
+}
+
+/* ==========================================================================
+   PAGES 404 & RECHERCHE SANS RÉSULTAT
+   ========================================================================== */
+body.error404 #primary.content-area,
+body.search-no-results #primary.content-area {
+  min-height: 50vh;
+  padding-bottom: 4rem;
+}
+
+/* Carte 404 — blanche, coins arrondis, bordure, ombre (comme .dm-no-products) */
+.dm-404-content {
+  position: relative;
+  z-index: 10;
+  max-width: 36rem;
+  margin: -3rem auto 3rem;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.06);
+}
+@media (min-width: 768px) {
+  .dm-404-content {
+    margin-top: -4rem;
+    padding: 3.5rem 2.5rem;
+  }
+}
+
+.dm-404-number {
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 15vw, 8rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--orange);
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.dm-404-icon {
+  color: #e53e3e;
+  margin-bottom: 1.5rem;
+}
+
+.dm-404-content h1 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.dm-404-content p {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+
+.dm-404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.dm-404-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.dm-404-actions .btn-primary {
+  background: var(--navy-light);
+  color: #fff;
+  border: 2px solid var(--navy-light);
+}
+
+.dm-404-actions .btn-primary:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(2, 66, 118, 0.25);
+}
+
+.dm-404-actions .btn-outline {
+  background: transparent;
+  color: var(--navy-light);
+  border: 2px solid var(--navy-light);
+}
+
+.dm-404-actions .btn-outline:hover {
+  background: var(--navy-light);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Recherche sans résultat — carte blanche centrée (comme .dm-404-content) */
+body.search-no-results #main.site-main {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  body.search-no-results #main.site-main {
+    padding: 0 2rem;
+  }
+}
+
+body.search-no-results #main.site-main > article {
+  position: relative;
+  z-index: 10;
+  max-width: 36rem;
+  margin: -3rem auto 3rem;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.06);
+}
+@media (min-width: 768px) {
+  body.search-no-results #main.site-main > article {
+    margin-top: -4rem;
+    padding: 3.5rem 2.5rem;
+  }
+}
+
+body.search-no-results #main.site-main > article .entry-header,
+body.search-no-results #main.site-main > article .entry-content {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body.search-no-results #main.site-main h1,
+body.search-no-results #main.site-main h2 {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+body.search-no-results #main.site-main p {
+  font-family: var(--font-heading);
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+body.search-no-results .entry-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  background: var(--navy-light);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+body.search-no-results .entry-content a:hover {
+  background: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 66, 118, 0.28);
+}
+
+/* ==========================================================================
+   MOBILE TYPOGRAPHY — Réduction globale des tailles sur petit écran
+   Best practices (source: learnui.design 2024, iOS HIG, Material Design):
+   - Body: 16px minimum (iOS anti-zoom sur les inputs)
+   - Secondary text: 13-14px
+   - h1: max 1.75rem (28px), h2: 1.5rem (24px), h3: 1.25rem (20px)
+   - Inputs: ≥16px obligatoire (sinon iOS Safari zoome au focus)
+   - Line-height: 1.5-1.6 pour le body
+   ========================================================================== */
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* Titres globaux — réduits pour éviter les débordements et le zoom visuel */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  h4 {
+    font-size: 1.125rem !important;
+  }
+  h5 {
+    font-size: 1rem !important;
+  }
+  h6 {
+    font-size: 0.9rem !important;
+  }
+
+  /* Section titles — clamp déjà fluide mais on borne sur mobile */
+  .section-title,
+  .section-title-white {
+    font-size: 1.5rem !important;
+  }
+
+  /* Section subtitle — plus petit */
+  .section-subtitle {
+    font-size: 0.875rem !important;
+  }
+
+  /* Section label — déjà petit, légère réduction */
+  .section-label {
+    font-size: 0.6875rem !important;
+  }
+
+  /* En-têtes de section — moins de marge sur mobile */
+  .section-head {
+    margin-bottom: 2rem !important;
+  }
+
+  /* Paragraphes — body 15px (0.9375rem) pour mobile */
+  p {
+    font-size: 0.9375rem;
+  }
+
+  /* Inputs — ≥16px OBLIGATOIRE pour éviter le zoom iOS au focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="search"],
+  input[type="number"],
+  input[type="url"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Conteneurs — padding réduit sur mobile */
+  .dm-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}

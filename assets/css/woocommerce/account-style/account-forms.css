@@ -1,0 +1,411 @@
+/* ============================================================================
+   account-forms.css — Formulaires : connexion, inscription, édition de profil,
+   édition d'adresse. Champs arrondis, focus navy, carte conteneur.
+   ============================================================================ */
+
+/* ==========================================================================
+   PAGE DE CONNEXION / INSCRIPTION — overlap cards (chevauchement bannière)
+   ========================================================================== */
+
+/* --- Container : transparent, SANS margin négatif --- */
+.dm-auth-overlap {
+  position: relative;
+  z-index: 20;
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  background: transparent;
+}
+@media (min-width: 768px) {
+  .dm-auth-overlap {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dm-auth-overlap {
+    padding: 0 2.5rem;
+  }
+}
+
+/* --- Inner : transparent, plein largeur --- */
+.dm-auth-overlap__inner {
+  max-width: 100%;
+  margin: 0 auto;
+  background: transparent;
+}
+
+/* --- Deux cartes côte à côte sur desktop --- */
+.dm-auth-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .dm-auth-cards {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
+
+/* --- Carte individuelle (login / register) : 47% sur desktop, overlap -3rem --- */
+.dm-auth-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgba(2, 66, 118, 0.06);
+  padding: 2rem;
+  flex: none;
+  min-width: 0;
+  margin-top: -3rem;
+}
+.dm-auth-card--register {
+  border-left-color: var(--navy);
+}
+@media (min-width: 768px) {
+  .dm-auth-card {
+    width: 47%;
+    padding: 2.5rem;
+  }
+}
+@media (max-width: 767px) {
+  .dm-auth-card {
+    width: 100%;
+    padding: 1.75rem 1.5rem;
+    border-radius: var(--radius);
+    margin-top: -2rem;
+  }
+}
+
+/* --- Header de carte (icône + titre) --- */
+.dm-auth-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.dm-auth-card__icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 107, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+}
+.dm-auth-card__icon--register {
+  background: rgba(2, 66, 118, 0.1);
+  color: var(--navy);
+}
+.dm-auth-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+
+/* --- Info text (register password link message) --- */
+.dm-auth-card__info {
+  background: var(--cream, #f8fafc);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+
+/* --- Actions row (remember me + submit / submit only) --- */
+.dm-auth-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.dm-auth-card--register .dm-auth-card__actions {
+  justify-content: flex-end;
+}
+
+/* --- Override old WC col2-set styles that conflict --- */
+.woocommerce-account .woocommerce .u-columns,
+.woocommerce-account .woocommerce .col2-set {
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.woocommerce-account .woocommerce .u-column1,
+.woocommerce-account .woocommerce .u-column2,
+.woocommerce-account .woocommerce .col-1,
+.woocommerce-account .woocommerce .col-2 {
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* --- Forms inside cards : reset old card styling --- */
+.woocommerce-account .woocommerce .dm-auth-card form.login,
+.woocommerce-account .woocommerce .dm-auth-card form.register {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+/* --- Titre dans les cartes : cacher le h2 par défaut WC (on utilise dm-auth-card__title) --- */
+.woocommerce-account .woocommerce .dm-auth-card form.login h2,
+.woocommerce-account .woocommerce .dm-auth-card form.register h2,
+.woocommerce-account .woocommerce .dm-auth-card .u-column1 h2,
+.woocommerce-account .woocommerce .dm-auth-card .u-column2 h2 {
+  display: none !important;
+}
+
+/* --- Champs de connexion --- */
+.woocommerce-account .woocommerce .dm-auth-card form.login .form-row,
+.woocommerce-account .woocommerce .dm-auth-card form.register .form-row {
+  margin-bottom: 1rem;
+}
+
+/* --- Ligne "Se souvenir de moi" + bouton --- */
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.login
+  .form-row:last-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.login
+  .woocommerce-form-login__rememberme {
+  font-size: 0.82rem;
+}
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.login
+  .woocommerce-form-login__submit {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* --- Lien "mot de passe oublié" --- */
+.woocommerce-account .woocommerce .dm-auth-card form.login .lost_password {
+  text-align: center;
+  margin-top: 1.25rem;
+  width: 100%;
+}
+.woocommerce-account .woocommerce .dm-auth-card form.login .lost_password a {
+  font-size: 0.82rem;
+  color: var(--orange) !important;
+  font-weight: 600;
+}
+
+/* --- Bascule login / register --- */
+.woocommerce-account .woocommerce .woocommerce-form-register-toggle,
+.woocommerce-account .woocommerce .woocommerce-form-login-toggle {
+  background: var(--cream, #f8fafc);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* --- Bouton de connexion pleine largeur --- */
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.login
+  button[type="submit"],
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.register
+  button[type="submit"] {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  background: var(--navy) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.login
+  button[type="submit"]:hover,
+.woocommerce-account
+  .woocommerce
+  .dm-auth-card
+  form.register
+  button[type="submit"]:hover {
+  background: var(--navy-light) !important;
+  color: #fff !important;
+}
+
+/* --- Labels --- */
+.woocommerce-account form .form-row label,
+.woocommerce form.login label,
+.woocommerce form.register label {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+}
+
+/* --- Champs de saisie --- */
+.woocommerce-account form .input-text,
+.woocommerce form.login .input-text,
+.woocommerce form.register .input-text,
+.woocommerce form.woocommerce-EditAccountForm input[type="text"],
+.woocommerce form.woocommerce-EditAccountForm input[type="email"],
+.woocommerce form.woocommerce-EditAccountForm input[type="password"],
+.woocommerce form.woocommerce-EditAccountForm input[type="tel"],
+.woocommerce form.edit-account input[type="text"],
+.woocommerce form.edit-account input[type="email"],
+.woocommerce form.edit-account input[type="password"],
+.woocommerce form.edit-account input[type="tel"],
+.woocommerce-account .woocommerce-EditAddressForm input[type="text"],
+.woocommerce-account .woocommerce-EditAddressForm input[type="email"],
+.woocommerce-account .woocommerce-EditAddressForm input[type="password"],
+.woocommerce-account .woocommerce-EditAddressForm input[type="tel"],
+.woocommerce-account .woocommerce-EditAddressForm input[type="number"],
+.woocommerce-account .woocommerce-EditAddressForm select {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* --- Focus --- */
+.woocommerce-account form .input-text:focus,
+.woocommerce form.login .input-text:focus,
+.woocommerce form.register .input-text:focus,
+.woocommerce form.woocommerce-EditAccountForm input:focus,
+.woocommerce form.edit-account input:focus,
+.woocommerce-account .woocommerce-EditAddressForm input:focus,
+.woocommerce-account .woocommerce-EditAddressForm select:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 4px rgba(2, 66, 118, 0.1);
+}
+
+/* --- Legend --- */
+.woocommerce-account form legend {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* --- Checkbox labels --- */
+.woocommerce-account form .form-row .woocommerce-form__label-for-checkbox {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+/* --- Boutons de soumission (autres formulaires) --- */
+.woocommerce-account form.woocommerce-EditAccountForm button[type="submit"],
+.woocommerce-account form.edit-account button[type="submit"],
+.woocommerce-account .woocommerce-EditAccountForm button[type="submit"],
+.woocommerce-account .woocommerce-EditAddressForm button[type="submit"],
+.woocommerce-account form .woocommerce-Button {
+  background: var(--orange) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  padding: 0.6rem 1.5rem !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.woocommerce-account
+  form.woocommerce-EditAccountForm
+  button[type="submit"]:hover,
+.woocommerce-account form.edit-account button[type="submit"]:hover,
+.woocommerce-account .woocommerce-EditAccountForm button[type="submit"]:hover,
+.woocommerce-account .woocommerce-EditAddressForm button[type="submit"]:hover,
+.woocommerce-account form .woocommerce-Button:hover {
+  background: var(--orange-dark) !important;
+  color: #fff !important;
+}
+
+/* --- Bouton "Sauvegarder les changements" sur edit-account --- */
+.woocommerce-account .woocommerce-EditAccountForm .woocommerce-Button,
+.woocommerce-account .woocommerce-EditAccountForm button.button {
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   PAGE ÉDITION D'ADRESSE — neutraliser le fond/bordure des col-1/col-2
+   pour que le formulaire edit-address ne soit pas dans des cartes
+   (le grid layout est géré par account-addresses.css fallback)
+   ========================================================================== */
+.woocommerce-account.woocommerce-edit-address
+  .woocommerce-EditAddressForm
+  .col2-set
+  .col-1,
+.woocommerce-account.woocommerce-edit-address
+  .woocommerce-EditAddressForm
+  .col2-set
+  .col-2 {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+.woocommerce-account.woocommerce-edit-address
+  .woocommerce-EditAddressForm
+  .form-row {
+  width: 100% !important;
+  margin-bottom: 1rem;
+}
+.woocommerce-account.woocommerce-edit-address
+  .woocommerce-EditAddressForm
+  .form-row-first,
+.woocommerce-account.woocommerce-edit-address
+  .woocommerce-EditAddressForm
+  .form-row-last {
+  width: 100% !important;
+  float: none !important;
+  clear: none !important;
+}

@@ -1,0 +1,275 @@
+/* ============================================================================
+   account-addresses.css — Page "Mes adresses" + détails commande : cartes
+   d'adresses de facturation/livraison avec layout grid propre.
+   Utilise des classes custom dm-address-* (templates override).
+   ============================================================================ */
+
+/* --- Masquer le texte par défaut "Les adresses suivantes seront utilisées..." --- */
+.woocommerce-account .woocommerce-MyAccount-content > p:has(+ .dm-address-grid),
+.woocommerce-account .woocommerce-MyAccount-content > p:has(+ .u-columns),
+.woocommerce-account
+  .woocommerce-MyAccount-content
+  > p:has(+ .woocommerce-Addresses),
+.woocommerce-account .woocommerce-MyAccount-content > p:has(+ .addresses),
+.woocommerce-account .woocommerce-MyAccount-content > p:has(+ .col2-set) {
+  display: none !important;
+}
+.woocommerce-account.woocommerce-edit-address
+  .woocommerce-MyAccount-content
+  > p:first-child {
+  display: none !important;
+}
+
+/* --- Wrapper section sur la page détail commande --- */
+.woocommerce-account .woocommerce-customer-details {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   GRILLE D'ADRESSES — 2 colonnes en desktop, 1 colonne en mobile
+   ========================================================================== */
+.dm-address-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .dm-address-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   CARTE D'ADRESSE
+   ========================================================================== */
+.dm-address-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding:  0.9rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  transition: none;
+}
+.dm-address-card:hover {
+  box-shadow: none;
+}
+@media (max-width: 768px) {
+  .dm-address-card {
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+/* ==========================================================================
+   EN-TÊTE DE CARTE — titre + bouton "Modifier"
+   ========================================================================== */
+.dm-address-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.dm-address-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+
+/* --- Bouton "Modifier" --- */
+.dm-address-card__edit {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff !important;
+  text-decoration: none !important;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  background: var(--orange);
+  white-space: nowrap;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+.dm-address-card__edit:hover {
+  background: var(--orange-dark);
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   CONTENU DE L'ADRESSE
+   ========================================================================== */
+.dm-address-card__content {
+  color: var(--navy);
+  font-style: normal;
+  line-height: 1.8;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.dm-address-card__content p {
+  margin: 0;
+  color: var(--navy);
+}
+.dm-address-card__content .woocommerce-customer-details--phone,
+.dm-address-card__content .woocommerce-customer-details--email {
+  margin-top: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   FALLBACK — si les templates override ne sont pas chargés (cache WC)
+   ========================================================================== */
+.woocommerce-account .u-columns,
+.woocommerce-account .u-columns.woocommerce-Addresses,
+.woocommerce-account .woocommerce-Addresses,
+.woocommerce-account .addresses,
+.woocommerce-account .col2-set.addresses,
+.woocommerce-account .u-columns.col2-set.addresses,
+.woocommerce-account .woocommerce-columns--2,
+.woocommerce-account .woocommerce-columns,
+.woocommerce-account .woocommerce-columns.woocommerce-columns--addresses {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2rem !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  clear: both !important;
+}
+
+.woocommerce-account .u-columns .u-column1,
+.woocommerce-account .u-columns .u-column2,
+.woocommerce-account .u-columns .col-1,
+.woocommerce-account .u-columns .col-2,
+.woocommerce-account .col2-set .col-1,
+.woocommerce-account .col2-set .col-2,
+.woocommerce-account .col2-set.addresses .col-1,
+.woocommerce-account .col2-set.addresses .col-2,
+.woocommerce-account .woocommerce-Addresses .woocommerce-Address,
+.woocommerce-account .u-columns .woocommerce-Address,
+.woocommerce-account .woocommerce-columns .woocommerce-column,
+.woocommerce-account .woocommerce-columns--2 .woocommerce-column {
+  float: none !important;
+  width: auto !important;
+  max-width: none !important;
+  display: block !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+/* En-tête legacy WC */
+.woocommerce-account .woocommerce-Address-title,
+.woocommerce-account .woocommerce-Address-title.title,
+.woocommerce-account .woocommerce-Address .title,
+.woocommerce-account .woocommerce-column__title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid var(--border) !important;
+  float: none !important;
+  width: auto !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+}
+.woocommerce-account .woocommerce-Address-title h2,
+.woocommerce-account .woocommerce-Address-title h3,
+.woocommerce-account .woocommerce-Address .title h2,
+.woocommerce-account .woocommerce-Address .title h3 {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  margin: 0 !important;
+  float: none !important;
+}
+
+/* Bouton "Modifier" legacy WC */
+.woocommerce-account .woocommerce-Address-title a.edit,
+.woocommerce-account .woocommerce-Address-title a,
+.woocommerce-account .woocommerce-Address .title a.edit,
+.woocommerce-account .woocommerce-Address .title a {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-size: 0 !important;
+  font-weight: 600;
+  color: #fff !important;
+  text-decoration: none !important;
+  padding: 0.45rem 1rem !important;
+  border-radius: var(--radius) !important;
+  background: var(--orange) !important;
+  white-space: nowrap !important;
+  float: none !important;
+  border: none !important;
+  transition: background-color 0.2s ease;
+}
+.woocommerce-account .woocommerce-Address-title a.edit::after,
+.woocommerce-account .woocommerce-Address-title a::after,
+.woocommerce-account .woocommerce-Address .title a.edit::after,
+.woocommerce-account .woocommerce-Address .title a::after {
+  content: "Modifier";
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+}
+.woocommerce-account .woocommerce-Address-title a.edit:hover,
+.woocommerce-account .woocommerce-Address-title a:hover,
+.woocommerce-account .woocommerce-Address .title a.edit:hover,
+.woocommerce-account .woocommerce-Address .title a:hover {
+  background: var(--orange-dark) !important;
+  color: #fff !important;
+}
+
+/* Contenu legacy WC */
+.woocommerce-account .woocommerce-Address address,
+.woocommerce-account .u-columns .woocommerce-Address address,
+.woocommerce-account .col2-set.addresses address,
+.woocommerce-account .woocommerce-column address {
+  color: var(--navy) !important;
+  font-style: normal !important;
+  line-height: 1.8 !important;
+  font-size: 0.9rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  width: auto !important;
+}
+
+/* Responsive legacy WC */
+@media (max-width: 768px) {
+  .woocommerce-account .u-columns,
+  .woocommerce-account .u-columns.woocommerce-Addresses,
+  .woocommerce-account .woocommerce-Addresses,
+  .woocommerce-account .addresses,
+  .woocommerce-account .col2-set.addresses,
+  .woocommerce-account .woocommerce-columns--2,
+  .woocommerce-account .woocommerce-columns {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .woocommerce-account .u-columns .u-column1,
+  .woocommerce-account .u-columns .u-column2,
+  .woocommerce-account .u-columns .col-1,
+  .woocommerce-account .u-columns .col-2,
+  .woocommerce-account .col2-set .col-1,
+  .woocommerce-account .col2-set .col-2,
+  .woocommerce-account .woocommerce-Addresses .woocommerce-Address,
+  .woocommerce-account .woocommerce-columns .woocommerce-column {
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+}

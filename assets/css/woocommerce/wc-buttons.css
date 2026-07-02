@@ -1,0 +1,169 @@
+/* ==========================================================================
+   WC-BUTTONS — Habillage de TOUS les boutons WooCommerce
+   Chargé globalement sur tout le site.
+   Couleur primaire = navy (#1B6BB1) — même que la navbar.
+   Couleur secondaire (CTA principal) = orange (#FF6B00).
+   ========================================================================== */
+
+/* ==========================================================================
+   BASE COMMUNE — forme partagée par tous les boutons WC
+   ========================================================================== */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce .button,
+.woocommerce #place_order,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce form .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ==========================================================================
+   BOUTON SECONDAIRE / PAR DÉFAUT — navy (couleur primaire)
+   (ajouter au panier en boutique, mettre à jour le panier, appliquer coupon,
+    connexion/inscription, et tout .button générique)
+   ========================================================================== */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce .button {
+  background-color: var(--navy-light) !important;
+  border-color: var(--navy-light) !important;
+  color: #fff !important;
+}
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce .button:hover {
+  background-color: var(--navy) !important;
+  border-color: var(--navy) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 66, 118, 0.28);
+}
+
+/* ==========================================================================
+   BOUTON PRINCIPAL D'ACTION — orange
+   (ajouter au panier sur la fiche, passer commande, aller au paiement, .alt)
+   ========================================================================== */
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce .single_add_to_cart_button,
+.woocommerce #place_order,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button {
+  background-color: var(--orange) !important;
+  border-color: var(--orange) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce .single_add_to_cart_button:hover,
+.woocommerce #place_order:hover,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover {
+  background-color: var(--orange-dark) !important;
+  border-color: var(--orange-dark) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 107, 0, 0.32);
+}
+
+/* ==========================================================================
+   BOUTON OUTLINE — lien "Voir le panier" après ajout, actions discrètes
+   ========================================================================== */
+.woocommerce a.added_to_cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--navy-light);
+  background: transparent;
+  color: var(--navy-light);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+.woocommerce a.added_to_cart:hover {
+  background-color: var(--navy-light);
+  color: #fff;
+}
+
+/* ==========================================================================
+   ÉTATS — chargement / désactivé
+   ========================================================================== */
+.woocommerce .button.loading {
+  opacity: 0.75;
+}
+.woocommerce .button:disabled,
+.woocommerce .button[disabled],
+.woocommerce .button.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   BOUTONS DES BLOCS WOOCOMMERCE (panier & paiement en blocs Gutenberg)
+   ========================================================================== */
+.wc-block-components-button,
+.wp-block-woocommerce-cart .wc-block-cart__submit-button,
+.wc-block-components-checkout-place-order-button {
+  font-family: var(--font-heading) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius) !important;
+  line-height: 1.2;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.wc-block-components-button.contained,
+.wc-block-cart__submit-button,
+.wc-block-components-checkout-place-order-button {
+  background-color: var(--orange) !important;
+  border: 0 !important;
+  color: #fff !important;
+}
+.wc-block-components-button.contained:hover,
+.wc-block-cart__submit-button:hover,
+.wc-block-components-checkout-place-order-button:hover {
+  background-color: var(--orange-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 107, 0, 0.32);
+}
+.wc-block-components-button .wc-block-components-button__text {
+  color: inherit !important;
+}

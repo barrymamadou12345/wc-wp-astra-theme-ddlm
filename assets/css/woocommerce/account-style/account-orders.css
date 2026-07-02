@@ -1,0 +1,530 @@
+/* ============================================================================
+   account-orders.css — Historique des commandes, détail d'une commande,
+   statuts, téléchargements. Bordures arrondies, design moderne.
+   ============================================================================ */
+
+/* --- Tableau des commandes --- */
+.woocommerce-account table.woocommerce-orders-table,
+.woocommerce-account table.shop_table {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  border-collapse: separate !important;
+  overflow: hidden;
+}
+
+/* --- En-tête du tableau (navy) --- */
+.woocommerce-account table.shop_table thead th {
+  background: var(--navy) !important;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.95rem 1.1rem;
+  border: 0;
+}
+
+/* --- Cellules --- */
+.woocommerce-account table.shop_table td {
+  padding: 0.9rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+  vertical-align: middle;
+}
+
+/* --- Hover sur les lignes --- */
+.woocommerce-account table.shop_table tbody tr {
+  transition: background-color 0.2s ease;
+}
+.woocommerce-account table.shop_table tbody tr:hover td {
+  background: var(--cream);
+}
+
+/* --- Colonne statut --- */
+.woocommerce-account .woocommerce-orders-table__cell-order-status {
+  font-weight: 600;
+}
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-processing {
+  background: #fff3e0;
+  color: #e65100;
+}
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-pending,
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-on-hold {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-cancelled,
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-failed,
+.woocommerce-account
+  .woocommerce-orders-table__cell-order-status
+  .woocommerce-Order-status.status-refunded {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+/* --- Colonne actions --- */
+.woocommerce-account .woocommerce-orders-table__cell-order-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius);
+  background: var(--orange) !important;
+  color: #fff !important;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.woocommerce-account .woocommerce-orders-table__cell-order-actions a:hover {
+  background: var(--orange-dark) !important;
+  color: #fff !important;
+}
+
+/* --- Message "aucune commande" --- */
+.woocommerce-account .woocommerce-message.woocommerce-Message--info {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   DÉTAIL D'UNE COMMANDE
+   ========================================================================== */
+
+/* --- Titres --- */
+.woocommerce-account .woocommerce-order-details__title,
+.woocommerce-account .woocommerce-column__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid var(--orange);
+}
+
+/* --- Résumé de commande (overview) --- */
+.woocommerce-account .woocommerce-order-overview {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+.woocommerce-account .woocommerce-order-overview li {
+  border-right: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+}
+.woocommerce-account .woocommerce-order-overview li:last-child {
+  border-right: 0;
+}
+.woocommerce-account .woocommerce-order-overview li strong {
+  color: var(--orange);
+  font-size: 0.95rem;
+}
+.woocommerce-account
+  .woocommerce-order-overview
+  li
+  .woocommerce-order-overview__total
+  strong {
+  color: var(--orange);
+}
+
+/* --- Tableau des articles --- */
+.woocommerce-account .woocommerce-table--order-details {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+}
+.woocommerce-account .woocommerce-table--order-details thead th {
+  background: var(--navy) !important;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.1rem;
+}
+.woocommerce-account .woocommerce-table--order-details td {
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+.woocommerce-account .woocommerce-table--order-details tfoot th {
+  background: var(--cream);
+  font-weight: 700;
+}
+.woocommerce-account .woocommerce-table--order-details tfoot td {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* --- Métadonnées des articles --- */
+.woocommerce-account .woocommerce-order-details .wc-item-meta li {
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+/* --- Colonnes (adresse facturation/livraison sur détail commande) --- */
+.woocommerce-account .woocommerce-columns--2,
+.woocommerce-account .woocommerce-columns,
+.woocommerce-account .u-columns,
+.woocommerce-account .u-columns.woocommerce-Addresses {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2rem !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  clear: both !important;
+}
+.woocommerce-account .woocommerce-column,
+.woocommerce-account .u-columns .u-column1,
+.woocommerce-account .u-columns .u-column2,
+.woocommerce-account .u-columns .col-1,
+.woocommerce-account .u-columns .col-2 {
+  float: none !important;
+  width: auto !important;
+  max-width: none !important;
+  display: block !important;
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 2rem !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04) !important;
+  box-sizing: border-box !important;
+}
+.woocommerce-account .woocommerce-column address,
+.woocommerce-account .u-columns .u-column1 address,
+.woocommerce-account .u-columns .u-column2 address {
+  color: var(--navy) !important;
+  font-style: normal !important;
+  line-height: 1.8 !important;
+  font-size: 0.9rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.woocommerce-account .woocommerce-column__title {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  margin: 0 0 1rem !important;
+  padding-bottom: 0.75rem !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+@media (max-width: 768px) {
+  .woocommerce-account .woocommerce-columns--2,
+  .woocommerce-account .woocommerce-columns,
+  .woocommerce-account .u-columns,
+  .woocommerce-account .u-columns.woocommerce-Addresses {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .woocommerce-account .woocommerce-column,
+  .woocommerce-account .u-columns .u-column1,
+  .woocommerce-account .u-columns .u-column2 {
+    padding: 1.5rem !important;
+    border-radius: var(--radius) !important;
+  }
+  /* Order overview — empiler verticalement sur mobile */
+  .woocommerce-account .woocommerce-order-overview {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  .woocommerce-account .woocommerce-order-overview li {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 0.75rem 1rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-size: 0.75rem !important;
+  }
+  .woocommerce-account .woocommerce-order-overview li:last-child {
+    border-bottom: 0 !important;
+  }
+  .woocommerce-account .woocommerce-order-overview li strong {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* ==========================================================================
+   TÉLÉCHARGEMENTS
+   ========================================================================== */
+.woocommerce-account .woocommerce-MyAccount-downloads .shop_table {
+  border-radius: var(--radius-lg);
+}
+.woocommerce-account .woocommerce-MyAccount-downloads .download-item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius);
+  background: var(--orange) !important;
+  color: #fff !important;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.woocommerce-account .woocommerce-MyAccount-downloads .download-item a:hover {
+  background: var(--orange-dark) !important;
+  color: #fff !important;
+}
+
+/* --- Téléchargements : responsive mobile-first --- */
+@media (max-width: 768px) {
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table {
+    border-radius: var(--radius);
+  }
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table thead {
+    display: none;
+  }
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table,
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table tbody,
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table tr,
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table td {
+    display: block;
+    width: 100% !important;
+  }
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0;
+  }
+  .woocommerce-account
+    .woocommerce-MyAccount-downloads
+    .shop_table
+    tr:last-child {
+    border-bottom: 0;
+  }
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table td {
+    padding: 0.4rem 0.75rem;
+    border: 0;
+    text-align: left;
+  }
+  .woocommerce-account .woocommerce-MyAccount-downloads .shop_table td::before {
+    content: attr(data-title);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+}
+
+/* --- Tableau commandes : responsive mobile-first --- */
+@media (max-width: 768px) {
+  .woocommerce-account table.woocommerce-orders-table {
+    border-radius: var(--radius);
+  }
+  .woocommerce-account table.woocommerce-orders-table thead {
+    display: none;
+  }
+  .woocommerce-account table.woocommerce-orders-table,
+  .woocommerce-account table.woocommerce-orders-table tbody,
+  .woocommerce-account table.woocommerce-orders-table tr,
+  .woocommerce-account table.woocommerce-orders-table td {
+    display: block;
+    width: 100% !important;
+  }
+  .woocommerce-account table.woocommerce-orders-table tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .woocommerce-account table.woocommerce-orders-table tr:last-child {
+    border-bottom: 0;
+  }
+  .woocommerce-account table.woocommerce-orders-table td {
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    text-align: left;
+  }
+  .woocommerce-account table.woocommerce-orders-table td::before {
+    content: attr(data-title);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  .woocommerce-account .woocommerce-orders-table__cell-order-actions {
+    margin-top: 0.25rem;
+  }
+}
+
+/* ==========================================================================
+   PAGE "COMMANDES NON PAYÉES" — endpoint unpaid-orders
+   ========================================================================== */
+.woocommerce-account-unpaid-orders h2 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+}
+.woocommerce-account-unpaid-orders__intro {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--muted-foreground);
+  margin: 0 0 1.5rem;
+}
+.woocommerce-account-unpaid-orders .woocommerce-message--info {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--navy);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+/* Tableau des commandes non payées */
+.woocommerce-account table.woocommerce-table--unpaid-orders {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  border-collapse: separate !important;
+  overflow: hidden;
+}
+.woocommerce-account table.woocommerce-table--unpaid-orders thead th {
+  background: var(--navy) !important;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.95rem 1.1rem;
+  border: 0;
+}
+.woocommerce-account table.woocommerce-table--unpaid-orders td {
+  padding: 0.9rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--navy);
+  vertical-align: middle;
+}
+.woocommerce-account table.woocommerce-table--unpaid-orders td a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+}
+.woocommerce-account table.woocommerce-table--unpaid-orders .order-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.woocommerce-account
+  table.woocommerce-table--unpaid-orders
+  .order-status--pending {
+  background: rgba(255, 107, 0, 0.12);
+  color: var(--orange);
+}
+.woocommerce-account
+  table.woocommerce-table--unpaid-orders
+  .order-status--checkout-draft {
+  background: rgba(255, 107, 0, 0.12);
+  color: var(--orange);
+}
+.woocommerce-account
+  table.woocommerce-table--unpaid-orders
+  .order-status--on-hold {
+  background: rgba(2, 66, 118, 0.1);
+  color: var(--navy);
+}
+.woocommerce-account
+  table.woocommerce-table--unpaid-orders
+  .order-status--failed {
+  background: rgba(192, 57, 43, 0.1);
+  color: #c0392b;
+}
+.woocommerce-account table.woocommerce-table--unpaid-orders .button.pay {
+  background: var(--orange) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  padding: 0.5rem 1.25rem !important;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+.woocommerce-account table.woocommerce-table--unpaid-orders .button.pay:hover {
+  background: var(--orange-dark) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .woocommerce-account table.woocommerce-table--unpaid-orders thead {
+    display: none;
+  }
+  .woocommerce-account table.woocommerce-table--unpaid-orders,
+  .woocommerce-account table.woocommerce-table--unpaid-orders tbody,
+  .woocommerce-account table.woocommerce-table--unpaid-orders tr,
+  .woocommerce-account table.woocommerce-table--unpaid-orders td {
+    display: block;
+    width: 100% !important;
+  }
+  .woocommerce-account table.woocommerce-table--unpaid-orders tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .woocommerce-account table.woocommerce-table--unpaid-orders td {
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    text-align: left;
+  }
+  .woocommerce-account table.woocommerce-table--unpaid-orders td::before {
+    content: attr(data-title);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+}

@@ -1,0 +1,480 @@
+/* ============================================================================
+   account-dashboard.css — Tableau de bord : KPIs, bienvenue, raccourcis,
+   dernière commande, adresses résumé. Design "wow" moderne.
+   ============================================================================ */
+
+/* --- Conteneur dashboard --- */
+.dm-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   EN-TÊTE DE BIENVENUE — carte blanche propre avec accent orange
+   ========================================================================== */
+.dm-dashboard-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.75rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: var(--radius-lg);
+  color: var(--navy);
+  box-shadow: none;
+}
+.dm-dashboard-welcome-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dm-dashboard-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(2, 66, 118, 0.12);
+}
+.dm-dashboard-greeting {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.2rem;
+}
+.dm-dashboard-subtitle {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.5;
+}
+.dm-dashboard-logout {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.dm-dashboard-logout:hover {
+  color: #c0392b;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   KPIs — Cartes modernes avec barres colorées et icônes
+   ========================================================================== */
+.dm-dashboard-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 900px) {
+  .dm-dashboard-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .dm-dashboard-kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dm-kpi-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+}
+.dm-kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.dm-kpi-card--navy::before {
+  background: var(--navy);
+}
+.dm-kpi-card--orange::before {
+  background: var(--orange);
+}
+.dm-kpi-card--blue::before {
+  background: #1565c0;
+}
+.dm-kpi-card--green::before {
+  background: #2e7d32;
+}
+
+.dm-kpi-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.dm-kpi-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+}
+.dm-kpi-card--navy .dm-kpi-icon {
+  background: rgba(2, 66, 118, 0.1);
+  color: var(--navy);
+}
+.dm-kpi-card--orange .dm-kpi-icon {
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--orange);
+}
+.dm-kpi-card--blue .dm-kpi-icon {
+  background: rgba(21, 101, 192, 0.1);
+  color: #1565c0;
+}
+.dm-kpi-card--green .dm-kpi-icon {
+  background: rgba(46, 125, 50, 0.1);
+  color: #2e7d32;
+}
+
+.dm-kpi-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.dm-kpi-value .woocommerce-Price-amount {
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2rem;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+}
+.dm-kpi-value .woocommerce-Price-amount .woocommerce-Price-currencySymbol {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.7;
+  order: 2;
+}
+.dm-kpi-label {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   SECTIONS — Titres avec barre orange
+   ========================================================================== */
+.dm-dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.dm-dashboard-section .dm-last-order + .dm-last-order {
+  margin-top: 0.5rem;
+}
+.dm-dashboard-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--orange);
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   DERNIÈRE COMMANDE — Carte avec hover
+   Desktop : info (num+date) à gauche, meta (statut+prix+lien) à droite
+   Mobile  : grid 2 colonnes — row1: num+statut, row2: date+prix, bouton full
+   ========================================================================== */
+.dm-last-order {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: none;
+  transition: box-shadow 0.25s ease;
+}
+.dm-last-order:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.dm-last-order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.dm-last-order-num {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.92rem;
+}
+.dm-last-order-date {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+}
+.dm-last-order-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+.dm-last-order-total {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+.dm-last-order-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--orange) !important;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius);
+  background: rgba(255, 107, 0, 0.08);
+  transition: background-color 0.2s ease;
+}
+.dm-last-order-link:hover {
+  background: rgba(255, 107, 0, 0.15);
+}
+
+/* --- Badges de statut --- */
+.dm-order-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--cream);
+  color: var(--muted-foreground);
+}
+.dm-order-status--completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.dm-order-status--processing {
+  background: #fff3e0;
+  color: #e65100;
+}
+.dm-order-status--pending,
+.dm-order-status--on-hold {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.dm-order-status--cancelled,
+.dm-order-status--failed,
+.dm-order-status--refunded {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+/* ==========================================================================
+   DERNIÈRES COMMANDES — Responsive mobile
+   Utilise display:contents pour aplatir info/meta dans une grid 2 colonnes.
+   Desktop reste inchangé (flex row, info gauche, meta droite).
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Carte commande — grid 2 colonnes */
+  .dm-last-order {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+    padding: 1rem 1.1rem !important;
+  }
+
+  /* Aplatir les conteneurs intermédiaires */
+  .dm-last-order-info,
+  .dm-last-order-meta {
+    display: contents !important;
+    margin-left: 0 !important;
+  }
+
+  /* Row 1 : numéro (gauche) + statut (droite) */
+  .dm-last-order-num {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .dm-last-order .dm-order-status {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  /* Row 2 : date (gauche) + prix (droite) */
+  .dm-last-order-date {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .dm-last-order-total {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  /* Row 3 : bouton pleine largeur */
+  .dm-last-order-link {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0.5rem 0.8rem !important;
+    white-space: normal !important;
+  }
+}
+
+/* ==========================================================================
+   RACCOURCIS — Cartes interactives
+   ========================================================================== */
+.dm-dashboard-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 900px) {
+  .dm-dashboard-shortcuts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .dm-dashboard-shortcuts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dm-shortcut-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1.35rem 1rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: none;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+.dm-shortcut-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.dm-shortcut-card svg {
+  color: var(--navy);
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+.dm-shortcut-card:hover svg {
+  color: var(--orange);
+  transform: scale(1.15);
+}
+
+/* ==========================================================================
+   ADRESSES RÉSUMÉ — Cartes jumelles
+   ========================================================================== */
+.dm-dashboard-addresses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 768px) {
+  .dm-dashboard-addresses {
+    grid-template-columns: 1fr;
+  }
+  /* Padding interne — spécificité supérieure pour écraser account-addresses.css
+     qui met padding:0 sur .dm-address-card en mobile */
+  .dm-dashboard .dm-dashboard-addresses .dm-address-card {
+    padding: 1rem 1.1rem !important;
+    border-radius: var(--radius-lg) !important;
+  }
+  .dm-dashboard .dm-dashboard-addresses .dm-address-card-head {
+    padding-bottom: 0.65rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .dm-dashboard .dm-dashboard-addresses .dm-address-card p {
+    line-height: 1.65 !important;
+  }
+}
+
+.dm-address-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: none;
+  transition: box-shadow 0.25s ease;
+}
+.dm-address-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.dm-address-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.dm-address-card-head h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+.dm-address-card-head a {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--orange) !important;
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  background: rgba(255, 107, 0, 0.08);
+  transition: background-color 0.2s ease;
+}
+.dm-address-card-head a:hover {
+  background: rgba(255, 107, 0, 0.15);
+}
+.dm-address-card p {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.65;
+}

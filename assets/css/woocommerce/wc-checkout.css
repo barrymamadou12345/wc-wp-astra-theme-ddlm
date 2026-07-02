@@ -1,0 +1,584 @@
+/* wc-checkout.css — Page de paiement : champs de formulaire, récapitulatif de commande, blocs de paiement. (Bouton "Commander" : wc-buttons.css.) */
+
+/* ==========================================================================
+   COLONNE INFOS CLIENT (legacy shortcode checkout)
+   ========================================================================== */
+.woocommerce-checkout #customer_details {
+  font-family: var(--font-heading);
+}
+.woocommerce-checkout .woocommerce-billing-fields > h3,
+.woocommerce-checkout .woocommerce-shipping-fields > h3,
+.woocommerce-checkout #order_review_heading {
+  font-weight: 300;
+  color: var(--navy);
+  font-size: 1.4rem;
+}
+
+/* ==========================================================================
+   CHAMPS DE FORMULAIRE (legacy)
+   ========================================================================== */
+.woocommerce-checkout .form-row label,
+.woocommerce form .form-row label {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+.woocommerce-checkout .form-row .input-text,
+.woocommerce-checkout .form-row textarea,
+.woocommerce-checkout select,
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  line-height: 1.4;
+}
+.woocommerce-checkout .form-row .input-text:focus,
+.woocommerce-checkout .form-row textarea:focus,
+.woocommerce-checkout select:focus,
+.woocommerce form .form-row input.input-text:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(2, 66, 118, 0.12);
+}
+.woocommerce-checkout .select2-container--default .select2-selection--single {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  height: auto;
+  padding: 0.35rem 0.4rem;
+}
+
+/* ==========================================================================
+   RÉCAPITULATIF DE COMMANDE (legacy)
+   ========================================================================== */
+.woocommerce-checkout #order_review,
+.woocommerce-checkout .woocommerce-checkout-review-order {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+}
+.woocommerce-checkout table.woocommerce-checkout-review-order-table {
+  border: 0;
+}
+.woocommerce-checkout table.woocommerce-checkout-review-order-table thead th {
+  background: var(--navy) !important;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1rem 1.1rem !important;
+}
+.woocommerce-checkout table.woocommerce-checkout-review-order-table td,
+.woocommerce-checkout table.woocommerce-checkout-review-order-table th {
+  border-top: 1px solid var(--border);
+  padding: 0.85rem 1.1rem !important;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--navy);
+}
+.woocommerce-checkout table.woocommerce-checkout-review-order-table tfoot th {
+  background: var(--cream);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.9rem 1.1rem !important;
+}
+.woocommerce-checkout
+  table.woocommerce-checkout-review-order-table
+  tfoot
+  .order-total
+  th,
+.woocommerce-checkout
+  table.woocommerce-checkout-review-order-table
+  tfoot
+  .order-total
+  td {
+  font-size: 1rem;
+  color: var(--orange);
+  border-top: 2px solid var(--border);
+  padding: 1rem 1.1rem !important;
+}
+.woocommerce-checkout
+  table.woocommerce-checkout-review-order-table
+  .order-total
+  .amount {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   BLOC DE PAIEMENT (legacy)
+   ========================================================================== */
+.woocommerce-checkout #payment {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1rem 1rem !important;
+  margin-bottom: 1.5rem;
+}
+.woocommerce-checkout #payment ul.payment_methods {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+.woocommerce-checkout #payment ul.payment_methods li {
+  padding: 0.5rem 0;
+}
+.woocommerce-checkout #payment ul.payment_methods li label {
+  font-weight: 600;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+}
+.woocommerce-checkout #payment div.payment_box {
+  background: rgba(255, 107, 0, 0.06);
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+}
+.woocommerce-checkout #payment div.payment_box::before {
+  border-bottom-color: rgba(255, 107, 0, 0.06);
+}
+.woocommerce-checkout #payment .woocommerce-privacy-policy-text {
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  padding: 0.75rem 0;
+}
+.woocommerce-checkout #payment .form-row {
+  padding: 0.5rem 0;
+}
+.woocommerce-checkout #place_order {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   PAIEMENT EN BLOCS (bloc WooCommerce "Validation de commande" — wc-block-checkout)
+   Markup distinct du checkout classique ci-dessus.
+   Les champs, selects, radios, checkboxes et conteneur sont stylés dans
+   checkout-style/checkout-form.css. Ici on ne garde que la sidebar (récap).
+   ========================================================================== */
+.wp-block-woocommerce-checkout {
+  font-family: var(--font-heading);
+  color: var(--navy);
+}
+/* Récap commande (colonne de droite) présenté comme une carte — on ne touche
+   pas au contenu, juste le cadre extérieur. */
+.wc-block-checkout__sidebar .wc-block-components-sidebar {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.25rem;
+}
+.wc-block-checkout__sidebar
+  .wc-block-components-totals-footer-item
+  .wc-block-components-totals-item__value,
+.wc-block-checkout__sidebar
+  .wc-block-components-totals-footer-item
+  .wc-block-components-formatted-money-amount {
+  color: var(--navy) !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile : récap commande empilé, tailles réduites
+   Cible .wp-block-woocommerce-checkout-order-summary-block (bloc Gutenberg)
+   ET .wc-block-checkout__sidebar (sidebar desktop qui descend en bas)
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* L'accordéon (order-summary-block) reste visible — c'est le seul
+     résumé de commande. WooCommerce le place en haut sur mobile via
+     container query (order:0 sur la sidebar). */
+  .wp-block-woocommerce-checkout-order-summary-block {
+    display: block !important;
+  }
+
+  /* MASQUER le résumé dupliqué en bas (le « fill » rendu par WC
+     près du bouton valider). WooCommerce le montre sur mobile via
+     @container (max-width:699px) — on le cache avec !important. */
+  .wp-block-woocommerce-checkout-order-summary-block.checkout-order-summary-block-fill-wrapper {
+    display: none !important;
+  }
+
+  /* Sidebar — full width, padding réduit */
+  .wc-block-checkout__sidebar,
+  .wc-block-checkout__sidebar .wc-block-components-sidebar,
+  .wp-block-woocommerce-checkout-totals-block {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Totaux (sous-total, livraison, total) — padding interne horizontal
+     pour ne pas être collé aux bords gauche/droit */
+  .wp-block-woocommerce-checkout-order-summary-block
+    .wc-block-components-totals-wrapper,
+  .wp-block-woocommerce-checkout-order-summary-block
+    .wc-block-components-totals-item,
+  .wp-block-woocommerce-checkout-order-summary-block
+    .wc-block-components-totals-coupon {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  .wp-block-woocommerce-checkout-order-summary-totals-block {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  /* Titre du récap — plus petit sur mobile */
+  .wc-block-components-order-summary__heading,
+  .wc-block-components-totals-item__label {
+    font-size: 0.85rem !important;
+  }
+
+  /* Items du récap — padding réduit */
+  .wc-block-components-totals-item {
+    padding: 0.5rem 0 !important;
+  }
+
+  /* Labels et valeurs — tailles mobile */
+  .wc-block-components-totals-item__label {
+    font-size: 0.8rem !important;
+  }
+  .wc-block-components-totals-item__value,
+  .wc-block-components-formatted-money-amount {
+    font-size: 0.8rem !important;
+  }
+
+  /* Total final — plus petit sur mobile */
+  .wc-block-components-totals-footer-item
+    .wc-block-components-totals-item__value,
+  .wc-block-components-totals-footer-item
+    .wc-block-components-formatted-money-amount {
+    font-size: 1.1rem !important;
+  }
+
+  /* Produits dans le récap — image + texte sur la même ligne,
+     prix total et badge en dessous (comme la page panier) */
+  .wc-block-components-order-summary-item {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  /* Image produit — plus petite sur mobile */
+  .wc-block-components-order-summary-item__image {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .wc-block-components-order-summary-item__image img {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  /* Nom produit — taille réduite */
+  .wc-block-components-order-summary-item__name {
+    font-size: 0.8rem !important;
+  }
+
+  /* Description produit — encore plus petite */
+  .wc-block-components-order-summary-item__description {
+    font-size: 0.7rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Prix individuels — empilés verticalement (comme la page panier) */
+  .wc-block-components-order-summary-item__individual-prices {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.15rem !important;
+    display: flex !important;
+  }
+
+  /* Prix total de l'item — repasse en bas, aligné à gauche */
+  .wc-block-components-order-summary-item__total-price {
+    font-size: 0.8rem !important;
+    text-align: left !important;
+    display: block !important;
+    width: 100% !important;
+    margin-top: 0.25rem !important;
+  }
+
+  /* Badge économisez — très petit sur mobile */
+  .wc-block-components-sale-badge {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.4rem !important;
+  }
+
+  /* Prix des produits dans le récap — plus petit */
+  .wc-block-components-product-price__value {
+    font-size: 0.8rem !important;
+  }
+  .wc-block-components-product-price__regular {
+    font-size: 0.7rem !important;
+  }
+
+  /* Quantité — plus discrète */
+  .wc-block-components-order-summary-item__quantity {
+    font-size: 0.75rem !important;
+    min-width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
+  /* Contenu du récap — padding interne réduit */
+  .wc-block-components-order-summary__content {
+    padding: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   PAGE "PAY FOR ORDER" (checkout/order-pay/) — paiement d'une commande existante
+   Utilise le checkout classique WC, pas les blocs.
+   ========================================================================== */
+.woocommerce-checkout-pay #order_review,
+.woocommerce-checkout-pay .woocommerce-checkout-review-order,
+.woocommerce-checkout-pay .woocommerce-checkout-review-order-table ~ #payment,
+body.woocommerce-checkout-pay .shop_table ~ #payment {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.woocommerce-checkout-pay table.woocommerce-checkout-review-order-table {
+  border: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  margin: 0 !important;
+}
+.woocommerce-checkout-pay
+  table.woocommerce-checkout-review-order-table
+  thead
+  th {
+  background: var(--navy) !important;
+  color: #fff !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.1rem;
+  border: 0;
+}
+.woocommerce-checkout-pay table.woocommerce-checkout-review-order-table td,
+.woocommerce-checkout-pay table.woocommerce-checkout-review-order-table th {
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1.1rem;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--navy);
+}
+.woocommerce-checkout-pay
+  table.woocommerce-checkout-review-order-table
+  tfoot
+  th {
+  background: var(--cream);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.woocommerce-checkout-pay
+  table.woocommerce-checkout-review-order-table
+  tfoot
+  .order-total
+  th,
+.woocommerce-checkout-pay
+  table.woocommerce-checkout-review-order-table
+  tfoot
+  .order-total
+  td {
+  font-size: 1rem;
+  color: var(--orange);
+  border-top: 2px solid var(--border);
+}
+
+/* Carte de paiement — padding X de 1rem */
+.woocommerce-checkout-pay #payment {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1rem 1rem !important;
+  margin-bottom: 1.5rem;
+}
+.woocommerce-checkout-pay #payment ul.payment_methods {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+.woocommerce-checkout-pay #payment ul.payment_methods li {
+  padding: 0.5rem 0;
+}
+.woocommerce-checkout-pay #payment ul.payment_methods li label {
+  font-weight: 600;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+}
+.woocommerce-checkout-pay #payment div.payment_box {
+  background: rgba(255, 107, 0, 0.06);
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+}
+.woocommerce-checkout-pay #payment div.payment_box::before {
+  border-bottom-color: rgba(255, 107, 0, 0.06);
+}
+.woocommerce-checkout-pay #payment .woocommerce-privacy-policy-text {
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  padding: 0.75rem 0;
+}
+.woocommerce-checkout-pay #payment .form-row {
+  padding: 0.5rem 0;
+}
+.woocommerce-checkout-pay #place_order {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile : checkout classique (legacy) table en block
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* Carte récap : padding réduit */
+  .woocommerce-checkout #order_review,
+  .woocommerce-checkout .woocommerce-checkout-review-order {
+    padding: 1rem 0.75rem !important;
+  }
+
+  /* Tableau récap : display block, chaque ligne empilée */
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table,
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table thead,
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table tbody,
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table tfoot,
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table tr,
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table th,
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table td {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Cacher l'en-tête du tableau sur mobile */
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table thead {
+    display: none !important;
+  }
+
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.625rem 0;
+  }
+
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table td {
+    border: none !important;
+    padding: 0.25rem 0 !important;
+    text-align: left !important;
+  }
+
+  .woocommerce-checkout table.woocommerce-checkout-review-order-table th {
+    border: none !important;
+    padding: 0.25rem 0 !important;
+  }
+
+  /* Titres de section — plus petits sur mobile */
+  .woocommerce-checkout .woocommerce-billing-fields > h3,
+  .woocommerce-checkout .woocommerce-shipping-fields > h3,
+  .woocommerce-checkout #order_review_heading {
+    font-size: 1.1rem !important;
+  }
+
+  /* Champs de formulaire — taille mobile (16px minimum pour iOS) */
+  .woocommerce-checkout .form-row .input-text,
+  .woocommerce-checkout .form-row textarea,
+  .woocommerce-checkout select,
+  .woocommerce form .form-row input.input-text,
+  .woocommerce form .form-row textarea {
+    font-size: 16px !important;
+    padding: 0.6rem 0.75rem !important;
+  }
+
+  /* Labels — plus petits */
+  .woocommerce-checkout .form-row label,
+  .woocommerce form .form-row label {
+    font-size: 0.85rem !important;
+  }
+
+  /* Total final — taille réduite */
+  .woocommerce-checkout
+    table.woocommerce-checkout-review-order-table
+    tfoot
+    .order-total
+    th,
+  .woocommerce-checkout
+    table.woocommerce-checkout-review-order-table
+    tfoot
+    .order-total
+    td {
+    font-size: 0.9rem !important;
+  }
+  .woocommerce-checkout
+    table.woocommerce-checkout-review-order-table
+    .order-total
+    .amount {
+    font-size: 1rem !important;
+  }
+
+  /* Bloc paiement — padding réduit */
+  .woocommerce-checkout #payment {
+    padding: 0.75rem !important;
+  }
+  .woocommerce-checkout #payment ul.payment_methods li label {
+    font-size: 0.85rem !important;
+  }
+  .woocommerce-checkout #payment div.payment_box {
+    font-size: 0.8rem !important;
+  }
+
+  /* Pay for order — mêmes règles */
+  .woocommerce-checkout-pay #order_review,
+  .woocommerce-checkout-pay .woocommerce-checkout-review-order {
+    padding: 1rem 0.75rem !important;
+  }
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table thead,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table tbody,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table tfoot,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table tr,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table th,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table td {
+    display: block !important;
+    width: 100% !important;
+  }
+  .woocommerce-checkout-pay
+    table.woocommerce-checkout-review-order-table
+    thead {
+    display: none !important;
+  }
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.625rem 0;
+  }
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table td,
+  .woocommerce-checkout-pay table.woocommerce-checkout-review-order-table th {
+    border: none !important;
+    padding: 0.25rem 0 !important;
+    text-align: left !important;
+  }
+}

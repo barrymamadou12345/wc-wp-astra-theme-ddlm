@@ -1,0 +1,401 @@
+/* ============================================================================
+   checkout-form.css — Page de paiement (bloc WC Checkout — React)
+   Transforme les champs à labels flottants en champs classiques avec
+   labels au-dessus et placeholders. Style cohérent avec account-forms.css.
+   ============================================================================ */
+
+/* ==========================================================================
+   CONTENEUR PRINCIPAL — un seul cadre (pas de double bordure)
+   ========================================================================== */
+.wp-block-woocommerce-checkout {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  max-width: 100%;
+}
+.wc-block-checkout__main {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem 1.75rem;
+  box-sizing: border-box;
+}
+.wp-block-woocommerce-checkout
+  .wc-block-components-form:not(.wc-block-checkout__main *) {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem 1.75rem;
+  box-sizing: border-box;
+}
+.wc-block-checkout__main .wc-block-components-form {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+@media (max-width: 768px) {
+  .wc-block-checkout__main,
+  .wp-block-woocommerce-checkout
+    .wc-block-components-form:not(.wc-block-checkout__main *) {
+    padding: 1rem 5px !important;
+    border-radius: var(--radius);
+    margin: 0 auto;
+    max-width: 100% !important;
+  }
+  .wp-block-woocommerce-checkout {
+    padding: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .woocommerce-checkout .ast-separate-container .ast-container,
+  .woocommerce-checkout .ast-separate-container .entry-content,
+  .woocommerce-checkout.ast-separate-container #primary,
+  .woocommerce-checkout .ast-separate-container .site-main,
+  .woocommerce-checkout .ast-separate-container .ast-article-single {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   ÉTAQUES (STEPS) — titres de section
+   ========================================================================== */
+.wc-block-components-checkout-step {
+  margin-bottom: 0;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.wc-block-components-checkout-step__heading {
+  padding: 1.25rem 0 0.75rem;
+  margin-bottom: 0;
+}
+.wc-block-components-checkout-step__title {
+  font-family: var(--font-heading) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  margin: 0 0 0.5rem !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--orange);
+}
+.wc-block-components-checkout-step__heading-content {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+.wc-block-components-checkout-step__content {
+  padding-top: 0.5rem;
+}
+
+/* ==========================================================================
+   CHAMPS TEXT INPUT — labels au-dessus (pas flottants)
+   ========================================================================== */
+.wc-block-components-text-input {
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 1rem;
+}
+.wc-block-components-text-input label {
+  position: static !important;
+  transform: none !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  color: var(--navy) !important;
+  margin: 0 0 0.4rem !important;
+  padding: 0 !important;
+  transform-origin: top left !important;
+  pointer-events: auto !important;
+  order: -1 !important;
+  top: auto !important;
+  left: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  width: auto !important;
+  height: auto !important;
+}
+.wc-block-components-text-input input,
+.wc-block-components-text-input input[type="text"],
+.wc-block-components-text-input input[type="email"],
+.wc-block-components-text-input input[type="tel"],
+.wc-block-components-text-input input[type="password"] {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  background: #fff !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4;
+  width: 100%;
+  box-sizing: border-box;
+  order: 0;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.wc-block-components-text-input input::placeholder {
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+.wc-block-components-text-input input:focus {
+  outline: none;
+  border-color: var(--navy) !important;
+  box-shadow: 0 0 0 4px rgba(2, 66, 118, 0.1) !important;
+}
+.wc-block-components-text-input.is-active label {
+  color: var(--navy) !important;
+}
+.wc-block-components-text-input.has-error input {
+  border-color: #e64545 !important;
+}
+
+/* ==========================================================================
+   SELECTS — pays, région
+   ========================================================================== */
+.wc-block-components-select,
+.wc-block-components-address-form__country,
+.wc-block-components-address-form__state {
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 1rem;
+  position: relative;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+.wc-blocks-components-select__container {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+}
+.wc-block-components-address-form__country::before,
+.wc-block-components-address-form__state::before {
+  content: attr(data-label);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--navy);
+  margin: 0 0 0.4rem !important;
+  display: block;
+}
+.wc-block-components-address-form__country::before {
+  content: "Pays / Région";
+}
+.wc-block-components-address-form__state::before {
+  content: "Région / Département";
+}
+.wc-block-components-select .wc-block-components-select__label,
+.wc-block-components-select > label,
+.wc-block-components-address-form__country > label,
+.wc-block-components-address-form__state > label,
+.wc-blocks-components-select__label {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  clip: rect(0 0 0 0) !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.wc-block-components-select .wc-block-components-select__select,
+.wc-blocks-components-select__select,
+.wc-block-components-address-form__country select,
+.wc-block-components-address-form__state select {
+  font-family: var(--font-heading) !important;
+  color: var(--navy) !important;
+  margin-top: 0 !important;
+  background: #fff !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.7rem 0.85rem !important;
+  font-size: 0.9rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  cursor: pointer;
+  appearance: auto !important;
+  -webkit-appearance: auto !important;
+  -moz-appearance: auto !important;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.wc-block-components-select .wc-block-components-select__select:focus,
+.wc-blocks-components-select__select:focus,
+.wc-block-components-address-form__country select:focus,
+.wc-block-components-address-form__state select:focus {
+  border-color: var(--navy) !important;
+  box-shadow: 0 0 0 4px rgba(2, 66, 118, 0.1) !important;
+}
+.wc-blocks-components-select__container::after,
+.wc-block-components-select .wc-block-components-select__icon,
+.wc-block-components-select svg,
+.wc-blocks-components-select__container > svg {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* ==========================================================================
+   TEXTAREA — note de commande
+   ========================================================================== */
+.wc-block-components-textarea {
+  font-family: var(--font-heading);
+  color: var(--navy);
+  background: #fff !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 0.9rem !important;
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.wc-block-components-textarea:focus {
+  outline: none;
+  border-color: var(--navy) !important;
+  box-shadow: 0 0 0 4px rgba(2, 66, 118, 0.1) !important;
+}
+
+/* ==========================================================================
+   CHECKBOX — "Utiliser la même adresse", newsletter, note de commande
+   ========================================================================== */
+.wc-block-components-checkbox {
+  margin: 0.5rem 0 0.75rem;
+}
+.wc-block-components-checkbox__label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem !important;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+.wc-block-components-checkbox__input {
+  border: 1.5px solid var(--border) !important;
+  border-radius: 4px !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 0.5rem !important;
+  cursor: pointer;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: #fff !important;
+  position: relative;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+.wc-block-components-checkbox__input:checked {
+  background-color: var(--orange) !important;
+  border-color: var(--orange) !important;
+}
+.wc-block-components-checkbox__input:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.wc-block-components-checkbox__mark {
+  display: none !important;
+}
+
+/* ==========================================================================
+   OPTIONS DE LIVRAISON & PAIEMENT — radio buttons
+   ========================================================================== */
+.wc-block-components-radio-control__option
+  .wc-block-components-radio-control__input:checked {
+  border-color: var(--orange) !important;
+  background: var(--orange) !important;
+}
+.wc-block-components-radio-control__option
+  .wc-block-components-radio-control__input:checked
+  ::after {
+  background: #fff !important;
+  border-color: #fff !important;
+}
+.wc-block-components-radio-control__mark {
+  display: none !important;
+}
+.wc-block-components-radio-control-accordion-content {
+  background: rgba(255, 107, 0, 0.06) !important;
+  border-top: 1px solid rgba(255, 107, 0, 0.15) !important;
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   LIENS & TEXTE — Conditions générales
+   ========================================================================== */
+.wc-block-components-checkout-policies {
+  margin-top: 1rem;
+  text-align: center;
+}
+.wc-block-components-checkout-policies__text {
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+}
+.wc-block-components-checkout-policies a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+}
+.wc-block-components-checkout-policies a:hover {
+  color: var(--orange);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .wc-block-components-checkout-step__title {
+    font-size: 1rem !important;
+  }
+  .wc-block-components-text-input input,
+  .wc-blocks-components-select__select,
+  .wc-block-components-address-form__country select,
+  .wc-block-components-address-form__state select {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 16px !important;
+  }
+  .wp-block-woocommerce-checkout {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .wc-block-checkout__main {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 1rem 3px !important;
+    box-sizing: border-box !important;
+  }
+  .wp-block-woocommerce-checkout
+    .wc-block-components-form:not(.wc-block-checkout__main *) {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 1rem 3px !important;
+    box-sizing: border-box !important;
+  }
+}

@@ -1,0 +1,60 @@
+/*
+Theme Name: Astra Delices de la Mer
+Theme URI:
+Description: Thème enfant pour Les Délices de la Mer basé sur Astra. Design prototype porté en CSS classique modulaire (assets/css/), header & footer custom via les hooks Astra, compatibilité WooCommerce préservée.
+Author: Delices de la Mer
+Author URI:
+Template: astra
+Version: 1.0.0
+Text Domain: astra-delices-de-la-mer
+*/
+
+/* --------------------------------------------------------------------------
+   NOTE D'ARCHITECTURE
+   Les styles sont organisés en fichiers modulaires chargés via functions.php :
+     - assets/css/base.css        (global : variables, typo, boutons, helpers)
+     - assets/css/header.css      (global : navbar)
+     - assets/css/footer.css      (global : footer)
+     - assets/css/home.css        (page d'accueil uniquement)
+     - assets/css/page-banner.css (pages internes : bannière d'en-tête)
+     - assets/css/woocommerce/    (design system WooCommerce modulaire)
+   Ce fichier ne contient que l'en-tête du thème (requis) et les overrides
+   structurels nécessaires pour neutraliser les conteneurs d'Astra.
+   -------------------------------------------------------------------------- */
+
+/* Page d'accueil : le contenu custom occupe toute la largeur.
+   On neutralise les conteneurs Astra UNIQUEMENT sur l'accueil pour ne pas
+   impacter la mise en page par défaut des autres pages et de WooCommerce. */
+body.home .ast-container {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+body.home .ast-separate-container .ast-article-post,
+body.home .ast-separate-container .ast-article-single {
+  padding: 0;
+  margin: 0;
+}
+
+/* L'accueil n'a aucun décalage haut (hero plein écran sous la navbar fixe). */
+body.home #content.site-content {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Pages internes : décalage haut pour la navbar fixe (desktop uniquement).
+   Sur mobile la navbar est dans le flux (position: relative) donc pas de décalage. */
+body:not(.home) #content.site-content {
+  padding-top: 7rem;
+}
+
+/* Neutraliser les paddings/margins d'Astra sur les conteneurs de header */
+header,
+.site-header,
+#masthead,
+.ast-header,
+.astra-header,
+.ast-primary-header {
+  padding: 0 !important;
+  margin: 0 !important;
+}

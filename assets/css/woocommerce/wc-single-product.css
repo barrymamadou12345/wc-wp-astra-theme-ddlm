@@ -1,0 +1,636 @@
+/* ==========================================================================
+   WC-SINGLE-PRODUCT — Fiche produit : galerie, résumé, quantité,
+   variations, onglets, produits liés.
+   Design system Délices de la Mer (navy / orange / Montserrat).
+   ========================================================================== */
+
+/* ==========================================================================
+   MISE EN PAGE GÉNÉRALE — espacement et conteneur
+   ========================================================================== */
+.single-product div.product {
+  font-family: var(--font-heading);
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 20;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .single-product div.product {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .single-product div.product {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Espacement vertical réduit entre la bannière et le produit */
+.single-product .ast-article-single,
+.single-product #primary,
+.single-product .ast-container {
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100% !important;
+}
+
+/* ==========================================================================
+   GALERIE D'IMAGES — image principale + vignettes
+   ========================================================================== */
+.single-product .woocommerce-product-gallery {
+  position: relative;
+  margin-bottom: 2rem;
+  z-index: 20;
+}
+/* Conteneur de l'image principale — angles arrondis uniquement, pas de bordure */
+.single-product
+  .woocommerce-product-gallery
+  .woocommerce-product-gallery__image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+.single-product
+  .woocommerce-product-gallery
+  .woocommerce-product-gallery__image
+  img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 24rem;
+  object-fit: cover !important;
+  border-radius: var(--radius-lg);
+  margin: 0 !important;
+  display: block;
+}
+
+/* Sur desktop, la galerie s'aligne en hauteur avec la carte de droite (summary) */
+@media (min-width: 768px) {
+  .single-product .woocommerce-product-gallery {
+    display: flex;
+    flex-direction: column;
+  }
+  .single-product
+    .woocommerce-product-gallery
+    .woocommerce-product-gallery__image {
+    flex: 1 1 auto;
+    min-height: 100%;
+  }
+  .single-product
+    .woocommerce-product-gallery
+    .woocommerce-product-gallery__image
+    img {
+    height: 100% !important;
+    max-height: 30rem;
+  }
+}
+@media (min-width: 1024px) {
+  .single-product
+    .woocommerce-product-gallery
+    .woocommerce-product-gallery__image
+    img {
+    max-height: 34rem;
+  }
+}
+
+/* Les badges/étiquettes WooCommerce (sale) bien visibles sur l'image */
+.single-product .woocommerce-product-gallery .onsale,
+.single-product span.onsale {
+  position: absolute !important;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 5;
+  background: var(--orange) !important;
+  color: #fff !important;
+  border-radius: var(--radius-full) !important;
+  padding: 0.3rem 0.75rem !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  min-height: auto !important;
+  line-height: 1.4 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+/* Badge rupture de stock — aligné à droite comme le zoom */
+.single-product .out-of-stock-badge {
+  position: absolute !important;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  background: rgba(2, 66, 118, 0.85) !important;
+  color: #fff !important;
+  border-radius: var(--radius-full) !important;
+  padding: 0.3rem 0.75rem !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+}
+
+/* Bouton zoom (loupe) — bien positionné en haut à droite dans l'image */
+.single-product .woocommerce-product-gallery__trigger {
+  position: absolute !important;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 6;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.15);
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.single-product .woocommerce-product-gallery__trigger img {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Quand le badge onsale et le zoom sont tous les deux présents,
+   décaler le zoom pour éviter le chevauchement */
+.single-product
+  .woocommerce-product-gallery__image:hover
+  .woocommerce-product-gallery__trigger {
+  opacity: 1 !important;
+}
+
+/* Vignettes sous la galerie */
+.single-product .woocommerce-product-gallery .flex-control-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+.single-product .woocommerce-product-gallery .flex-control-thumbs li {
+  margin: 0;
+  width: auto;
+}
+.single-product .woocommerce-product-gallery .flex-control-thumbs li img {
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  opacity: 0.7;
+  transition:
+    opacity 0.25s ease,
+    border-color 0.25s ease;
+  cursor: pointer;
+}
+.single-product .woocommerce-product-gallery .flex-control-thumbs li img:hover,
+.single-product
+  .woocommerce-product-gallery
+  .flex-control-thumbs
+  li
+  img.flex-active {
+  opacity: 1;
+  border-color: var(--navy);
+}
+
+/* (Bouton zoom stylé plus haut dans la section galerie) */
+
+/* ==========================================================================
+   RÉSUMÉ PRODUIT — fond subtil dégradé navy/orange faible opacité
+   ========================================================================== */
+.single-product div.product .summary {
+  background: linear-gradient(
+    135deg,
+    rgba(253, 252, 248, 0.95) 0%,
+    rgba(245, 243, 238, 0.95) 100%
+  );
+  border: 1px solid rgba(2, 66, 118, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  color: var(--navy);
+  box-shadow: 0 4px 20px rgba(2, 66, 118, 0.06);
+  position: relative;
+  z-index: 20;
+}
+@media (min-width: 768px) {
+  .single-product div.product .summary {
+    padding: 2rem 1.75rem;
+    z-index: 20;
+  }
+}
+
+.single-product div.product .product_title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 0 0 0.75rem;
+}
+.single-product div.product p.price,
+.single-product div.product .summary .price {
+  color: var(--orange) !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+.single-product div.product p.price del {
+  color: var(--muted-foreground);
+  font-weight: 400;
+  font-size: 1.05rem;
+  margin-right: 0.5rem;
+}
+.single-product div.product p.price ins {
+  text-decoration: none;
+  color: var(--orange);
+}
+.single-product div.product .woocommerce-product-details__short-description {
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Rating */
+.single-product div.product .woocommerce-product-rating {
+  margin-bottom: 1rem;
+}
+.single-product div.product .woocommerce-product-rating .star-rating {
+  color: var(--orange);
+}
+.single-product
+  div.product
+  .woocommerce-product-rating
+  .woocommerce-review-link {
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+.single-product
+  div.product
+  .woocommerce-product-rating
+  .woocommerce-review-link:hover {
+  color: var(--orange);
+}
+
+/* ==========================================================================
+   BLOC D'ACHAT (form.cart) — carte subtile dégradé
+   ========================================================================== */
+.single-product div.product form.cart {
+  background: linear-gradient(
+    135deg,
+    rgba(2, 66, 118, 0.06) 0%,
+    rgba(255, 107, 0, 0.04) 100%
+  );
+  border: 1px solid rgba(2, 66, 118, 0.08);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 0.5rem;
+  margin-bottom: 0;
+}
+.single-product div.product form.cart::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ==========================================================================
+   SÉLECTEUR DE QUANTITÉ — couleurs du thème (clair)
+   ========================================================================== */
+.single-product .quantity {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+.single-product .quantity input.qty {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.single-product .quantity input.qty::-webkit-outer-spin-button,
+.single-product .quantity input.qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.single-product .quantity .plus,
+.single-product .quantity .minus {
+  width: 2.5rem;
+  border: 0;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.single-product .quantity .plus:hover,
+.single-product .quantity .minus:hover {
+  background: var(--navy-light);
+  color: #fff;
+}
+
+/* ==========================================================================
+   SÉLECTEURS DE VARIATION — sur fond navy
+   ========================================================================== */
+.single-product .variations {
+  margin-bottom: 1rem;
+  border: 0;
+}
+.single-product .variations th,
+.single-product .variations td {
+  padding: 0.4rem 0.6rem 0.4rem 0;
+  vertical-align: middle;
+}
+.single-product .variations th.label label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+}
+.single-product .variations select {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--navy);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: #fff;
+  min-height: 2.75rem;
+}
+.single-product .reset_variations {
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.single-product .woocommerce-variation-price .price {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   MÉTA — catégories, SKU, tags
+   ========================================================================== */
+.single-product div.product .product_meta {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.single-product div.product .product_meta a {
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.single-product div.product .product_meta a:hover {
+  color: var(--orange);
+}
+.single-product div.product .product_meta .sku_wrapper,
+.single-product div.product .product_meta .posted_in,
+.single-product div.product .product_meta .tagged_as {
+  display: block;
+  margin-bottom: 0.375rem;
+}
+
+/* ==========================================================================
+   ONGLETS (Description / Infos complémentaires / Avis)
+   ========================================================================== */
+.single-product .woocommerce-tabs {
+  margin-top: 3rem;
+}
+.single-product .woocommerce-tabs ul.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.single-product .woocommerce-tabs ul.tabs::before {
+  display: none;
+}
+.single-product .woocommerce-tabs ul.tabs li {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.single-product .woocommerce-tabs ul.tabs li::before,
+.single-product .woocommerce-tabs ul.tabs li::after {
+  display: none;
+}
+.single-product .woocommerce-tabs ul.tabs li a {
+  display: inline-block;
+  padding: 0.7rem 1.1rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+.single-product .woocommerce-tabs ul.tabs li a:hover {
+  color: var(--navy);
+}
+.single-product .woocommerce-tabs ul.tabs li.active a {
+  color: var(--navy);
+  border-bottom-color: var(--orange);
+}
+.single-product .woocommerce-tabs .woocommerce-Tabs-panel {
+  color: var(--navy);
+  line-height: 1.7;
+  padding: 0 0 2rem;
+}
+.single-product .woocommerce-tabs .woocommerce-Tabs-panel h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   PRODUITS LIÉS / UPSELLS
+   ========================================================================== */
+.single-product .related > h2,
+.single-product .upsells > h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   AVIS — étoiles (déplacé dans la section summary ci-dessus)
+   ========================================================================== */
+.single-product .comment-form-rating .stars a,
+.single-product .stars span a {
+  font-family: var(--font-heading);
+}
+
+/* ==========================================================================
+   NOTIFICATIONS — ajout au panier
+   ========================================================================== */
+.single-product .woocommerce-message {
+  border-top-color: var(--navy);
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.08);
+}
+.single-product .woocommerce-message::before {
+  color: var(--navy);
+}
+
+/* ==========================================================================
+   RESPONSIVE — layout 2 colonnes sur desktop, 1 colonne mobile
+   ========================================================================== */
+@media (min-width: 768px) {
+  .single-product div.product {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .single-product div.product .woocommerce-product-gallery {
+    flex: 1 1 48%;
+    max-width: 48%;
+    margin-bottom: 0;
+  }
+  .single-product div.product .summary {
+    flex: 1 1 48%;
+    max-width: 48%;
+  }
+  /* Clearfix non nécessaire avec flexbox */
+  .single-product div.product::after {
+    display: none;
+  }
+  /* Les onglets et produits liés prennent toute la largeur */
+  .single-product div.product .woocommerce-tabs,
+  .single-product div.product .related,
+  .single-product div.product .upsells {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Bouton "Ajouter au panier" — équilibré avec le sélecteur de quantité */
+.single-product div.product form.cart .button.single_add_to_cart_button,
+.single-product div.product form.cart button.single_add_to_cart_button {
+  flex: 1;
+  height: 3rem;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: var(--radius) !important;
+  margin-left: 0.75rem !important;
+  padding: 0 1.25rem !important;
+}
+
+/* Le label "quantity" de WC — cacher */
+.single-product div.product form.cart label.screen-reader-text {
+  display: none;
+}
+
+/* Grouper quantité + bouton côte à côte */
+.single-product div.product form.cart .quantity {
+  vertical-align: middle;
+}
+.single-product div.product form.cart .single_add_to_cart_button {
+  vertical-align: middle;
+}
+
+/* Stock badge */
+.single-product div.product .stock {
+  color: var(--orange) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 0 0.75rem !important;
+  font-size: 0.85rem !important;
+}
+.single-product div.product .stock::before {
+  display: none;
+}
+
+/* Messages WC sur la fiche produit — fond blanc */
+.single-product .woocommerce-message {
+  border-top-color: var(--orange);
+  background: #fff;
+  border-radius: var(--radius);
+  color: var(--navy);
+  box-shadow: 0 2px 8px rgba(2, 66, 118, 0.08);
+}
+.single-product .woocommerce-message::before {
+  color: var(--orange);
+}
+
+/* ==========================================================================
+   MOBILE — 1 colonne, galerie au-dessus du résumé
+   ========================================================================== */
+@media (max-width: 767px) {
+  .single-product div.product {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .single-product div.product .woocommerce-product-gallery,
+  .single-product div.product .summary {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100% !important;
+  }
+  /* Image hauteur contrôlée sur mobile */
+  .single-product
+    .woocommerce-product-gallery
+    .woocommerce-product-gallery__image
+    img {
+    max-height: 20rem;
+  }
+  /* Sur mobile, le bouton ajouter au panier prend toute la largeur */
+  .single-product div.product form.cart .quantity {
+    display: flex;
+    margin-bottom: 0.75rem;
+  }
+  .single-product div.product form.cart .button.single_add_to_cart_button,
+  .single-product div.product form.cart button.single_add_to_cart_button {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+  }
+  /* Les onglets en scroll horizontal sur mobile */
+  .single-product .woocommerce-tabs ul.tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .single-product .woocommerce-tabs ul.tabs li {
+    flex-shrink: 0;
+  }
+}
