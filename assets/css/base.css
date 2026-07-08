@@ -829,7 +829,7 @@ body.search-no-results #primary.content-area {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--navy);
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -837,7 +837,7 @@ body.search-no-results #primary.content-area {
   font-family: var(--font-heading);
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--muted-foreground);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 0.75rem;
 }
 
@@ -863,27 +863,28 @@ body.search-no-results #primary.content-area {
 }
 
 .dm-404-actions .btn-primary {
-  background: var(--navy-light);
+  background: var(--orange);
   color: #fff;
-  border: 2px solid var(--navy-light);
+  border: 2px solid var(--orange);
 }
 
 .dm-404-actions .btn-primary:hover {
-  background: var(--navy);
-  border-color: var(--navy);
+  background: #e07b00;
+  border-color: #e07b00;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 66, 118, 0.25);
+  box-shadow: 0 8px 25px rgba(227, 124, 0, 0.35);
 }
 
 .dm-404-actions .btn-outline {
   background: transparent;
-  color: var(--navy-light);
-  border: 2px solid var(--navy-light);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .dm-404-actions .btn-outline:hover {
-  background: var(--navy-light);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #ffffff;
   transform: translateY(-2px);
 }
 

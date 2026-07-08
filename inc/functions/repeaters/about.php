@@ -362,8 +362,8 @@ function dm_about_page_html()
     $timeline = dm_get_about_timeline();
     $team     = dm_get_about_team();
     $hero_img = get_option('dm_about_hero_image', '');
-    $story    = get_option('dm_about_story', '');
-    $slogan   = get_option('dm_about_slogan', '');
+    $story    = get_option('dm_about_story', "Les Délices de la Mer est née en 2016 d'une conviction simple : le Sénégal mérite des snacks et apéritifs de qualité supérieure, fabriqués avec des ingrédients frais et selon des recettes qui respectent les saveurs authentiques de notre terroir.\n\nFondée à Dakar, notre entreprise a grandi avec la confiance de nos clients — des familles sénégalaises aux hôtels 5 étoiles, en passant par les grandes enseignes de distribution. Aujourd'hui, avec plus de 40 employés passionnés, nous fabriquons chaque jour une gamme variée de snacks croustillants et de produits fumés d'exception.");
+    $slogan   = get_option('dm_about_slogan', 'Une symbiose de saveurs');
 
     $icons = array(
         'fish' => 'Poisson', 'flame' => 'Flamme', 'truck' => 'Camion',

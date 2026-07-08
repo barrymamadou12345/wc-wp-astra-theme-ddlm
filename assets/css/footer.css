@@ -110,20 +110,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: var(--radius);
   background-color: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.dm-footer-social svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 .dm-footer-social:hover {
   background-color: var(--orange);
   color: #fff;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Titres colonnes */
@@ -236,25 +243,12 @@
 @media (min-width: 768px) {
   .dm-footer-bottom {
     flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
+    justify-content: center;
+    text-align: center;
   }
 }
 .dm-footer-copy {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
   margin: 0;
-}
-.dm-footer-legal {
-  display: flex;
-  gap: 1.25rem;
-}
-.dm-footer-legal a {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.dm-footer-legal a:hover {
-  color: var(--orange);
 }

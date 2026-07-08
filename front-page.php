@@ -33,56 +33,45 @@ $hero_stat_2l = get_option('dm_hero_stat_2l', 'Employés');
 $hero_stat_3v = get_option('dm_hero_stat_3v', '10+');
 $hero_stat_3l = get_option('dm_hero_stat_3l', 'Partenaires');
 
-$why_us_items = get_option('dm_why_us', array(
-    array('icon' => 'shield', 'title' => 'Qualité certifiée', 'desc' => 'Respect strict des normes HACCP et traçabilité complète de nos ingrédients.'),
-    array('icon' => 'clock', 'title' => 'Fraîcheur quotidienne', 'desc' => 'Produits préparés chaque jour dans nos ateliers pour une fraîcheur incomparable.'),
-    array('icon' => 'truck', 'title' => 'Livraison rapide', 'desc' => 'Livraison en 24-48h à Dakar, avec un service fiable et ponctuel.'),
-    array('icon' => 'leaf', 'title' => 'Ingrédients naturels', 'desc' => 'Des recettes sans additifs, avec des ingrédients soigneusement sélectionnés.'),
-));
+$why_us_items = get_option('dm_why_us', dm_get_default_why_us());
 
-$how_steps = get_option('dm_how_steps', array(
-    array('num' => '01', 'icon' => 'cart', 'title' => 'Commandez en ligne', 'desc' => 'Parcourez notre catalogue et ajoutez vos snacks préférés au panier en quelques clics.'),
-    array('num' => '02', 'icon' => 'clipboard', 'title' => 'Choisissez le paiement', 'desc' => 'Payez facilement via Orange Money, Wave ou en espèces à la livraison.'),
-    array('num' => '03', 'icon' => 'truck', 'title' => 'Livraison rapide', 'desc' => 'Recevez votre commande en 24-48h à Dakar, directement chez vous ou au bureau.'),
-    array('num' => '04', 'icon' => 'coffee', 'title' => 'Régalez-vous !', 'desc' => 'Dégustez des snacks croustillants préparés avec des ingrédients frais et de qualité.'),
-));
+$how_steps = get_option('dm_how_steps', dm_get_default_how_steps());
 
-$services = get_option('dm_services', array(
-    array('icon' => 'utensils', 'title' => 'Restauration Événementielle', 'desc' => 'Cocktails, mariages, séminaires — nous sublimons vos événements avec nos plateaux de snacks raffinés.', 'link' => '/services', 'image' => 'https://media.base44.com/images/public/6a335bc52ea23c09416a685d/d0f743324_generated_99b5c623.png'),
-    array('icon' => 'building', 'title' => 'Gestion de Cantines', 'desc' => 'Un service B2B clé en main pour les entreprises qui souhaitent offrir une restauration de qualité.', 'link' => '/services', 'image' => 'https://media.base44.com/images/public/6a335bc52ea23c09416a685d/90a8e37e2_generated_e0fb4722.png'),
-    array('icon' => 'package', 'title' => 'Produits Traiteur & Fumés', 'desc' => 'Poulet fumé, Kong fumé, Pigeon fumé — des saveurs authentiques prêtes à déguster.', 'link' => '/services', 'image' => 'https://media.base44.com/images/public/6a335bc52ea23c09416a685d/6b081792e_generated_e1eee356.png'),
-));
+$services = get_option('dm_services', dm_get_default_services());
 
-$stats = get_option('dm_stats', array(
-    array('value' => '8+', 'label' => "Années d'expérience"),
-    array('value' => '40+', 'label' => 'Employés passionnés'),
-    array('value' => '10+', 'label' => 'Partenaires distributeurs'),
-    array('value' => '1000+', 'label' => 'Clients satisfaits'),
-));
+$stats = get_option('dm_stats', dm_get_default_stats());
 
-$stats_images = get_option('dm_stats_images', array(
-    'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=500&fit=crop',
-    'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=500&fit=crop',
-));
+$stats_images = get_option('dm_stats_images', dm_get_default_stats_images());
 
 $testimonials = dm_get_testimonials();
 
 $promo = dm_get_current_promotion();
 
-$partners = get_option('dm_partners', array(
-    array('name' => 'Novotel', 'logo' => 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'Carrefour', 'logo' => 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'Auchan', 'logo' => 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'TotalEnergies', 'logo' => 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'Shell', 'logo' => 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'Pullman', 'logo' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'Seter', 'logo' => 'https://images.unsplash.com/photo-1570125909232-eb263c4e96cb?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'Terrou-Bi', 'logo' => 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=200&h=200&fit=crop&crop=center'),
-    array('name' => "Sen'Eau", 'logo' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=200&fit=crop&crop=center'),
-    array('name' => 'EDK', 'logo' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=center'),
-));
+$partners = get_option('dm_partners', dm_get_default_partners());
+
+// Section header options with defaults
+$why_label    = get_option('dm_why_label', 'Pourquoi nous choisir');
+$why_title    = get_option('dm_why_title', "L'Excellence à chaque bouchée");
+$why_subtitle = get_option('dm_why_subtitle', 'Ce qui fait de Délices de la Mer le choix préféré des Sénégalais pour leurs snacks et apéros.');
+
+$how_label    = get_option('dm_how_label', 'Simple & rapide');
+$how_title    = get_option('dm_how_title', 'Comment ça marche ?');
+$how_subtitle = get_option('dm_how_subtitle', "Commander vos snacks préférés n'a jamais été aussi simple.");
+
+$services_label    = get_option('dm_services_label', 'Ce que nous faisons');
+$services_title    = get_option('dm_services_title', 'Nos 3 Pôles de Service');
+$services_subtitle = get_option('dm_services_subtitle', 'De l\'événementiel à la vente de produits, nous couvrons tous vos besoins en restauration de qualité.');
+
+$stats_label  = get_option('dm_stats_label', 'Notre impact');
+$stats_title  = get_option('dm_stats_title', 'Une entreprise sénégalaise qui grandit avec vous');
+$stats_intro  = get_option('dm_stats_intro', 'Depuis 2016, nous accompagnons les familles sénégalaises, les hôtels de luxe et les grandes enseignes avec des produits de qualité. Notre croissance est le reflet de la confiance que vous nous accordez.');
+
+$testi_label    = get_option('dm_testi_label', 'Témoignages');
+$testi_title    = get_option('dm_testi_title', 'Ce que disent nos clients');
+$testi_subtitle = get_option('dm_testi_subtitle', 'La satisfaction de nos clients est notre plus grande fierté.');
+
+$partners_label = get_option('dm_partners_label', 'Ils nous font confiance');
+$partners_title = get_option('dm_partners_title', 'Retrouvez-nous chez nos partenaires');
 ?>
 
 <!-- ============ HERO SECTION ============ -->
@@ -236,9 +225,9 @@ $partners = get_option('dm_partners', array(
 <section class="dm-section bg-cream">
     <div class="dm-container">
         <div class="section-head reveal-el">
-            <p class="section-label">Pourquoi nous choisir</p>
-            <h2 class="section-title">L'Excellence à chaque <span class="accent-orange">bouchée</span></h2>
-            <p class="section-subtitle">Ce qui fait de Délices de la Mer le choix préféré des Sénégalais pour leurs snacks et apéros.</p>
+            <p class="section-label"><?php echo esc_html($why_label); ?></p>
+            <h2 class="section-title"><?php echo wp_kses_post($why_title); ?></h2>
+            <p class="section-subtitle"><?php echo esc_html($why_subtitle); ?></p>
         </div>
         <div class="dm-why-grid">
             <?php foreach ($why_us_items as $i => $item) :
@@ -262,9 +251,9 @@ $partners = get_option('dm_partners', array(
     <div class="dm-how-bg-glow dm-how-glow-2"></div>
     <div class="dm-container dm-how-container">
         <div class="section-head reveal-el">
-            <p class="section-label">Simple &amp; rapide</p>
-            <h2 class="section-title">Comment ça marche ?</h2>
-            <p class="section-subtitle">Commander vos snacks préférés n'a jamais été aussi simple.</p>
+            <p class="section-label"><?php echo esc_html($how_label); ?></p>
+            <h2 class="section-title"><?php echo esc_html($how_title); ?></h2>
+            <p class="section-subtitle"><?php echo esc_html($how_subtitle); ?></p>
         </div>
         <div class="dm-how-grid">
             <?php foreach ($how_steps as $i => $step) : ?>
@@ -291,15 +280,21 @@ $partners = get_option('dm_partners', array(
 <section class="dm-section bg-cream">
     <div class="dm-container">
         <div class="section-head reveal-el">
-            <p class="section-label">Ce que nous faisons</p>
-            <h2 class="section-title">Nos 3 Pôles de <span class="accent-orange">Service</span></h2>
-            <p class="section-subtitle">De l'événementiel à la vente de produits, nous couvrons tous vos besoins en restauration de qualité.</p>
+            <p class="section-label"><?php echo esc_html($services_label); ?></p>
+            <h2 class="section-title"><?php echo wp_kses_post($services_title); ?></h2>
+            <p class="section-subtitle"><?php echo esc_html($services_subtitle); ?></p>
         </div>
         <div class="dm-services-grid">
             <?php foreach ($services as $i => $svc) :
                 $icon = $svc['icon'] ?? 'utensils';
                 $link = $svc['link'] ?? '/services';
                 $image = $svc['image'] ?? '';
+                // Strip home URL prefix if full URL was entered
+                $home = home_url();
+                if (strpos($link, $home) === 0) {
+                    $link = substr($link, strlen($home));
+                }
+                $link = '/' . ltrim($link, '/');
             ?>
             <a href="<?php echo esc_url(home_url($link)); ?>" class="dm-service-card reveal-el" style="transition-delay: <?php echo esc_attr($i * 80); ?>ms;">
                 <?php if (!empty($image)) : ?>
@@ -331,18 +326,10 @@ if (class_exists('WooCommerce')) {
     $args = array(
         'post_type'      => 'product',
         'posts_per_page' => 6,
-        'tax_query'      => array(array(
-            'taxonomy' => 'product_visibility',
-            'field'    => 'name',
-            'terms'    => 'featured',
-            'operator' => 'IN',
-        )),
+        'orderby'        => 'date',
+        'order'          => 'DESC',
     );
     $featured = new WP_Query($args);
-    if (empty($featured->posts)) {
-        $args = array('post_type' => 'product', 'posts_per_page' => 6, 'orderby' => 'date', 'order' => 'DESC');
-        $featured = new WP_Query($args);
-    }
     if ($featured->have_posts()) {
         ob_start();
         echo '<ul class="products columns-3">';
@@ -388,20 +375,15 @@ if (class_exists('WooCommerce')) {
             <p class="section-subtitle">Découvrez notre gamme de snacks et apéritifs salés, préparés artisanalement chaque jour.</p>
         </div>
         <div class="dm-snacks-menu-grid reveal-el">
+            <?php
+            $snacks_items = get_option('dm_snacks_menu', dm_get_default_snacks_menu());
+            $snacks_total = count($snacks_items);
+            $snacks_left_count = (int) ceil($snacks_total / 2);
+            $snacks_left = array_slice($snacks_items, 0, $snacks_left_count);
+            $snacks_right = array_slice($snacks_items, $snacks_left_count);
+            ?>
             <div class="dm-snacks-menu-col">
-                <?php
-                $snacks_items = array(
-                    array('name' => 'Nems bœuf x10', 'price' => '2 250 Fr'),
-                    array('name' => 'Nems crevettes x10', 'price' => '2 500 Fr'),
-                    array('name' => 'Nems bourek x10', 'price' => '2 500 Fr'),
-                    array('name' => 'Beignets crevette x10', 'price' => '2 750 Fr'),
-                    array('name' => 'Pastels x10', 'price' => '2 000 Fr'),
-                    array('name' => 'Fataya x10', 'price' => '2 000 Fr'),
-                    array('name' => 'Samoussa x10', 'price' => '2 500 Fr'),
-                    array('name' => 'Pain chinois x10', 'price' => '2 500 Fr'),
-                );
-                foreach ($snacks_items as $item) :
-                ?>
+                <?php foreach ($snacks_left as $item) : if (empty($item['name']) && empty($item['price'])) continue; ?>
                 <div class="dm-snacks-menu-row">
                     <span class="dm-snacks-menu-name"><?php echo esc_html($item['name']); ?></span>
                     <span class="dm-snacks-menu-dots"></span>
@@ -410,18 +392,7 @@ if (class_exists('WooCommerce')) {
                 <?php endforeach; ?>
             </div>
             <div class="dm-snacks-menu-col">
-                <?php
-                $snacks_items_2 = array(
-                    array('name' => 'Rissoles x10', 'price' => '2 500 Fr'),
-                    array('name' => 'Quiches x10', 'price' => '2 250 Fr'),
-                    array('name' => 'Pizza x10', 'price' => '2 250 Fr'),
-                    array('name' => 'Akkaras paquet 250g', 'price' => '1 500 Fr'),
-                    array('name' => 'Tacos x1', 'price' => '350 Fr'),
-                    array('name' => 'Beignets saucisses x1', 'price' => '350 Fr'),
-                    array('name' => 'Apéros salés plateau x50', 'price' => '15 000 Fr'),
-                );
-                foreach ($snacks_items_2 as $item) :
-                ?>
+                <?php foreach ($snacks_right as $item) : if (empty($item['name']) && empty($item['price'])) continue; ?>
                 <div class="dm-snacks-menu-row">
                     <span class="dm-snacks-menu-name"><?php echo esc_html($item['name']); ?></span>
                     <span class="dm-snacks-menu-dots"></span>
@@ -444,9 +415,9 @@ if (class_exists('WooCommerce')) {
         <div class="dm-stats-grid">
             <!-- Left: stats content -->
             <div class="dm-stats-content reveal-el">
-                <p class="section-label" style="text-align:left;">Notre impact</p>
-                <h2 class="section-title" style="text-align:left;">Une entreprise sénégalaise qui <span class="accent-orange">grandit</span> avec vous</h2>
-                <p class="dm-stats-intro">Depuis 2016, nous accompagnons les familles sénégalaises, les hôtels de luxe et les grandes enseignes avec des produits de qualité. Notre croissance est le reflet de la confiance que vous nous accordez.</p>
+                <p class="section-label" style="text-align:left;"><?php echo esc_html($stats_label); ?></p>
+                <h2 class="section-title" style="text-align:left;"><?php echo wp_kses_post($stats_title); ?></h2>
+                <p class="dm-stats-intro"><?php echo esc_html($stats_intro); ?></p>
                 <div class="dm-stats-list">
                     <?php
                     $stat_icons = array('award', 'users', 'store');
@@ -518,8 +489,8 @@ if (class_exists('WooCommerce')) {
 <section class="dm-partners-section">
     <div class="dm-container dm-partners-inner">
         <div class="section-head reveal-el">
-            <p class="section-label">Ils nous font confiance</p>
-            <h2 class="section-title">Retrouvez-nous chez nos partenaires</h2>
+            <p class="section-label"><?php echo esc_html($partners_label); ?></p>
+            <h2 class="section-title"><?php echo esc_html($partners_title); ?></h2>
         </div>
         <div class="dm-partners-grid">
             <?php foreach ($partners as $idx => $partner) :
@@ -552,9 +523,9 @@ if (class_exists('WooCommerce')) {
 <section class="dm-section bg-cream">
     <div class="dm-container">
         <div class="section-head reveal-el">
-            <p class="section-label">Témoignages</p>
-            <h2 class="section-title">Ce que disent <span class="accent-orange">nos clients</span></h2>
-            <p class="section-subtitle">La satisfaction de nos clients est notre plus grande fierté.</p>
+            <p class="section-label"><?php echo esc_html($testi_label); ?></p>
+            <h2 class="section-title"><?php echo wp_kses_post($testi_title); ?></h2>
+            <p class="section-subtitle"><?php echo esc_html($testi_subtitle); ?></p>
         </div>
         <div class="dm-testimonials-carousel" id="testimonials-carousel">
             <div class="dm-testimonials-track" id="testimonials-track">

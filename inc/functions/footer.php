@@ -54,7 +54,7 @@ function dm_custom_footer()
                                 <?php if ($is_svg) : ?>
                                     <?php echo $icon; // phpcs:ignore ?>
                                 <?php else : ?>
-                                    <img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($social['name']); ?>" width="16" height="16" />
+                                    <?php echo dm_get_social_icon_svg($icon); // phpcs:ignore ?>
                                 <?php endif; ?>
                             </a>
                         <?php endforeach; ?>
@@ -155,10 +155,6 @@ function dm_custom_footer()
                 <p class="dm-footer-copy">
                     © <?php echo esc_html(date('Y')); ?> Délices de la Mer. Tous droits réservés.
                 </p>
-                <div class="dm-footer-legal">
-                    <a href="<?php echo esc_url(home_url('/legal')); ?>">Mentions légales</a>
-                    <a href="<?php echo esc_url(home_url('/privacy')); ?>">Confidentialité</a>
-                </div>
             </div>
         </div>
     </footer>

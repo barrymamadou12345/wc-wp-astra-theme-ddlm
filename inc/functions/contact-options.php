@@ -160,31 +160,59 @@ function dm_wa_link($message = '')
 }
 
 /**
+ * Liste des icônes de réseaux sociaux disponibles pour le select admin.
+ */
+function dm_social_icon_options()
+{
+    return array(
+        'facebook'  => 'Facebook',
+        'instagram' => 'Instagram',
+        'youtube'   => 'YouTube',
+        'tiktok'    => 'TikTok',
+        'twitter'   => 'Twitter / X',
+        'linkedin'  => 'LinkedIn',
+        'whatsapp'  => 'WhatsApp',
+        'telegram'  => 'Telegram',
+        'pinterest' => 'Pinterest',
+        'snapchat'  => 'Snapchat',
+        'github'    => 'GitHub',
+        'email'     => 'Email',
+    );
+}
+
+/**
+ * Retourne le SVG inline d'une icône de réseau social.
+ * Toutes les icônes utilisent currentColor pour hériter de la couleur du parent.
+ */
+function dm_get_social_icon_svg($key)
+{
+    $icons = array(
+        'facebook' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+        'instagram' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
+        'youtube' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.18 1 12 1 12s0 3.82.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.82 23 12 23 12s0-3.82-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>',
+        'tiktok' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>',
+        'twitter' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+        'linkedin' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
+        'whatsapp' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>',
+        'telegram' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.531 6.998-3.014 3.332-1.387 4.025-1.627 4.476-1.635z"/></svg>',
+        'pinterest' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.648 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.608 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/></svg>',
+        'snapchat' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.976-.301.15-.09.301-.12.4-.12.149 0 .301.046.42.12.449.301.449.961-.046 1.26-.226.121-.6.271-1.05.331-.241.029-.481.045-.676.045-.181 0-.329-.012-.435-.029.029.225.075.48.135.75.165.811.405 1.531.706 2.131.811 1.621 2.386 2.491 3.332 2.871.165.075.271.226.271.391.029.449-.375.93-1.155 1.35-.301.166-.676.241-.93.301-.121.029-.226.075-.286.105-.045.18-.075.435-.105.69-.075.526-.165 1.171-.631 1.171-.181 0-.361-.045-.57-.075-.301-.046-.676-.105-1.155-.105-.271 0-.526.015-.78.075-.481.105-.9.405-1.38.75-.691.526-1.471 1.095-2.642 1.095-.046 0-.09-.015-.121-.015-.046 0-.075.015-.121.015-1.171 0-1.951-.555-2.642-1.095-.481-.345-.9-.646-1.38-.75-.255-.061-.526-.075-.78-.075-.481 0-.855.045-1.155.105-.211.029-.391.075-.57.075-.465 0-.555-.631-.631-1.171-.029-.255-.075-.51-.105-.69-.061-.045-.166-.075-.286-.105-.255-.075-.646-.135-.93-.301-.78-.42-1.185-.93-1.155-1.35 0-.165.105-.316.271-.391.946-.405 2.521-1.275 3.332-2.871.301-.6.541-1.32.706-2.131.06-.271.105-.525.135-.75-.105.015-.255.029-.435.029-.196 0-.435-.015-.676-.045-.451-.061-.826-.211-1.05-.331-.481-.301-.481-.961-.046-1.26.121-.075.271-.12.42-.12.099 0 .249.029.4.12.317.181.676.285.976.301.196 0 .324-.045.401-.09-.015-.165-.029-.33-.046-.51l-.003-.06c-.105-1.621-.226-3.647.299-4.847C7.858 1.069 11.215.793 12.206.793z"/></svg>',
+        'github' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>',
+        'email' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+    );
+    return $icons[$key] ?? $icons['facebook'];
+}
+
+/**
  * Réseaux sociaux par défaut (4 réseaux).
  */
 function dm_default_social_networks()
 {
     return array(
-        array(
-            'name' => 'Facebook',
-            'url'  => 'https://facebook.com',
-            'icon' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
-        ),
-        array(
-            'name' => 'Instagram',
-            'url'  => 'https://instagram.com',
-            'icon' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>',
-        ),
-        array(
-            'name' => 'YouTube',
-            'url'  => 'https://youtube.com',
-            'icon' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.18 1 12 1 12s0 3.82.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.82 23 12 23 12s0-3.82-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>',
-        ),
-        array(
-            'name' => 'TikTok',
-            'url'  => 'https://tiktok.com',
-            'icon' => '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path></svg>',
-        ),
+        array('name' => 'Facebook',  'url' => 'https://facebook.com',  'icon' => 'facebook'),
+        array('name' => 'Instagram', 'url' => 'https://instagram.com', 'icon' => 'instagram'),
+        array('name' => 'YouTube',   'url' => 'https://youtube.com',   'icon' => 'youtube'),
+        array('name' => 'TikTok',    'url' => 'https://tiktok.com',    'icon' => 'tiktok'),
     );
 }
 
@@ -220,7 +248,7 @@ function dm_sanitize_social_networks($input)
         foreach ($input as $item) {
             $name = isset($item['name']) ? sanitize_text_field($item['name']) : '';
             $url  = isset($item['url']) ? esc_url_raw($item['url']) : '';
-            $icon = isset($item['icon']) ? $item['icon'] : '';
+            $icon = isset($item['icon']) ? sanitize_text_field($item['icon']) : 'facebook';
             if ($name && $url) {
                 $clean[] = array(
                     'name' => $name,
@@ -330,10 +358,13 @@ function dm_content_dashboard_html()
 {
     if (!current_user_can('manage_options')) return;
     $pages = array(
-        array('slug' => 'dm-home-sections', 'title' => "Sections d'accueil", 'desc' => "Hero, Why Us, How It Works, Services, Stats, Témoignages, Partenaires", 'icon' => 'dashicons-admin-home'),
+        array('slug' => 'dm-home-sections', 'title' => "Sections d'accueil", 'desc' => "Hero, Why Us, How It Works, Services, Stats, Témoignages, Partenaires, Tarifs", 'icon' => 'dashicons-admin-home'),
+        array('slug' => 'dm-about', 'title' => 'À Propos', 'desc' => "Valeurs, chiffres clés, chronologie, équipe, hero & histoire", 'icon' => 'dashicons-info'),
+        array('slug' => 'dm-services', 'title' => 'Nos Services', 'desc' => "Sections de services, image de bannière, features", 'icon' => 'dashicons-format-aside'),
         array('slug' => 'dm-contacts', 'title' => 'Coordonnées', 'desc' => "Téléphone, email, adresse, WhatsApp, réseaux sociaux, hero, horaires, carte", 'icon' => 'dashicons-location-alt'),
         array('slug' => 'dm-stores', 'title' => 'Points de Vente', 'desc' => "Distributeurs, hôtels, stations-service, transport — cartes avec image, type, zone", 'icon' => 'dashicons-store'),
         array('slug' => 'dm-promotions', 'title' => 'Promotions', 'desc' => "Créer et gérer les promotions, produits en promo, dates d'échéance, contenu détaillé", 'icon' => 'dashicons-megaphone'),
+        array('slug' => 'dm-seo', 'title' => 'SEO', 'desc' => "Référencement : meta descriptions, Open Graph, Schema.org, robots, titres SEO par page", 'icon' => 'dashicons-search'),
     );
     ?>
     <div class="wrap">
@@ -424,7 +455,8 @@ function dm_contacts_page_html()
             </table>
 
             <h2 class="title">Réseaux sociaux</h2>
-            <p class="description">Ajoutez, modifiez ou supprimez les réseaux sociaux affichés dans le footer.</p>
+            <p class="description">Ajoutez, modifiez ou supprimez les réseaux sociaux affichés dans le footer. Choisissez l'icône dans la liste déroulante.</p>
+            <?php $icon_options = dm_social_icon_options(); ?>
             <table class="form-table" role="presentation">
                 <tr>
                     <th scope="row">Réseaux</th>
@@ -434,14 +466,16 @@ function dm_contacts_page_html()
                             <div class="dm-social-row" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;">
                                 <input type="text" name="dm_social_networks[<?php echo esc_attr($i); ?>][name]" value="<?php echo esc_attr($social['name']); ?>" placeholder="Nom (ex: Facebook)" class="regular-text" style="width:180px;" />
                                 <input type="url" name="dm_social_networks[<?php echo esc_attr($i); ?>][url]" value="<?php echo esc_attr($social['url']); ?>" placeholder="Lien" class="regular-text" style="width:300px;" />
-                                <input type="text" name="dm_social_networks[<?php echo esc_attr($i); ?>][icon]" value="<?php echo esc_attr($social['icon']); ?>" placeholder="URL icône ou code SVG" class="regular-text dm-social-icon-input" style="width:300px;" />
-                                <button type="button" class="button dm-social-upload">Icône</button>
+                                <select name="dm_social_networks[<?php echo esc_attr($i); ?>][icon]" class="dm-social-icon-select" style="width:180px;">
+                                    <?php foreach ($icon_options as $val => $label) : ?>
+                                        <option value="<?php echo esc_attr($val); ?>"<?php selected($social['icon'] ?? 'facebook', $val); ?>><?php echo esc_html($label); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                                 <button type="button" class="button button-link-delete dm-social-remove">Supprimer</button>
                             </div>
                             <?php endforeach; ?>
                         </div>
                         <p><button type="button" class="button button-secondary" id="dm-social-add">+ Ajouter un réseau</button></p>
-                        <p class="description">L'icône peut être une URL d'image (bouton « Icône ») ou du code SVG.</p>
                     </td>
                 </tr>
             </table>
@@ -556,12 +590,12 @@ function dm_contacts_page_html()
         jQuery(function($) {
             // ---- Réseaux sociaux ----
             var rowIndex = <?php echo count($socials); ?>;
+            var socialIconsHtml = '<?php foreach ($icon_options as $val => $label) : ?><option value="<?php echo esc_attr($val); ?>"><?php echo esc_html($label); ?></option><?php endforeach; ?>';
             function createSocialRow() {
                 var html = '<div class="dm-social-row" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;">' +
                     '<input type="text" name="dm_social_networks[' + rowIndex + '][name]" value="" placeholder="Nom (ex: Facebook)" class="regular-text" style="width:180px;" />' +
                     '<input type="url" name="dm_social_networks[' + rowIndex + '][url]" value="" placeholder="Lien" class="regular-text" style="width:300px;" />' +
-                    '<input type="text" name="dm_social_networks[' + rowIndex + '][icon]" value="" placeholder="URL icône ou code SVG" class="regular-text dm-social-icon-input" style="width:300px;" />' +
-                    '<button type="button" class="button dm-social-upload">Icône</button>' +
+                    '<select name="dm_social_networks[' + rowIndex + '][icon]" class="dm-social-icon-select" style="width:180px;">' + socialIconsHtml + '</select>' +
                     '<button type="button" class="button button-link-delete dm-social-remove">Supprimer</button>' +
                 '</div>';
                 rowIndex++;
@@ -572,20 +606,6 @@ function dm_contacts_page_html()
             });
             $('#dm-social-repeater').on('click', '.dm-social-remove', function() {
                 $(this).closest('.dm-social-row').remove();
-            });
-            $('#dm-social-repeater').on('click', '.dm-social-upload', function(e) {
-                e.preventDefault();
-                var $input = $(this).siblings('.dm-social-icon-input');
-                var frame = wp.media({
-                    title: 'Choisir une icône',
-                    button: { text: 'Utiliser comme icône' },
-                    multiple: false
-                });
-                frame.on('select', function() {
-                    var attachment = frame.state().get('selection').first().toJSON();
-                    $input.val(attachment.url);
-                });
-                frame.open();
             });
 
             // ---- Horaires ----

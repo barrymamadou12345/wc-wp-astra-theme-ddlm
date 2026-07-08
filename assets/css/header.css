@@ -112,8 +112,8 @@ body.admin-bar .dm-navbar-wrapper {
   flex-shrink: 0;
 }
 .dm-logo-img {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   object-fit: contain;
   border-radius: 50%;
   background: #fff;

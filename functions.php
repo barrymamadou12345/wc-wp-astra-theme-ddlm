@@ -41,6 +41,7 @@ require_once DM_THEME_DIR . '/inc/functions/repeaters/services.php';
 require_once DM_THEME_DIR . '/inc/functions/repeaters/about.php';
 require_once DM_THEME_DIR . '/inc/functions/repeaters/gallery.php';
 require_once DM_THEME_DIR . '/inc/functions/repeaters/promotions.php';
+require_once DM_THEME_DIR . '/inc/functions/seo.php';
 
 // Custom Post Types (à activer selon les besoins)
 // require_once DM_THEME_DIR . '/inc/cpt/cpt-testimonials.php';
