@@ -93,7 +93,7 @@ function dm_get_contact_hero_image()
  */
 function dm_get_contact_map_lat()
 {
-    return get_option('dm_contact_map_lat', '14.6928');
+    return (float) get_option('dm_contact_map_lat', '14.6928');
 }
 
 /**
@@ -101,7 +101,7 @@ function dm_get_contact_map_lat()
  */
 function dm_get_contact_map_lng()
 {
-    return get_option('dm_contact_map_lng', '-17.4467');
+    return (float) get_option('dm_contact_map_lng', '-17.4467');
 }
 
 /**
@@ -109,7 +109,7 @@ function dm_get_contact_map_lng()
  */
 function dm_get_contact_map_zoom()
 {
-    return get_option('dm_contact_map_zoom', '14');
+    return (float) get_option('dm_contact_map_zoom', '14');
 }
 
 /**
